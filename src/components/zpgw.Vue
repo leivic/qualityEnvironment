@@ -2,15 +2,18 @@
     <div>
             <top></top>
             <snav zpgwClass="active"></snav>
-            <div id="chartZpgw1" ></div>    
+            <div id="chartZpgw1" style="{width: '75%', height: '400px'}"></div>    
     </div>
 </template>
 
 <script>
 import snav from "./Navagationbar"
 import top from "./TopCard"     
-let echarts = require('echarts/lib/echarts')  
-// 引入柱状图组件     
+let echarts = require('echarts/lib/echarts')
+import { GridComponent } from 'echarts/components';
+echarts.use([GridComponent]);
+// 引入柱状图组件 我是使用npm install echarts 安装最新版的echarts 版本不一样
+//引入可能也会有一些差别 
 require('echarts/lib/chart/bar')
 // 引入提示框和title组件
 require('echarts/lib/component/tooltip')
@@ -29,6 +32,7 @@ export default {
     top,
   },
   mounted(){
+    var that = this;
     this.$axios({
               method:"post",
               url:'http://localhost:8090/selectModel3ByMonth',
@@ -37,7 +41,35 @@ export default {
               }
           }).then((res)=>{
             console.log(res.data);
-            
+            var xdata=[];
+            var ydata=[];
+            for (let i=0;i<res.data.length;i++){
+              xdata.push(res.data[i].station)
+              console.log(xdata);
+              ydata.push(res.data[i].percentage)
+            }
+            let myChart = echarts.init(document.getElementById('chartZpgw1'))
+              myChart.setOption({
+                title: {
+                  text:"质量生态环境"+that.month+"月工位符合率",
+                  textStyle:{
+                    fontSize:22
+                  },
+                  left: "center",
+                },
+                xAxis: {
+                    type: 'category',
+                    data: xdata
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: ydata,
+                    type: 'bar'
+                }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
+              })
+
            })
 }
 }
