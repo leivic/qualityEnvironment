@@ -46,7 +46,7 @@ export default {
             for (let i=0;i<res.data.length;i++){
               xdata.push(res.data[i].station)
               console.log(xdata);
-              ydata.push(res.data[i].percentage)
+              ydata.push(res.data[i].percentage*100)//传过来的是小数，转百分比
             }
             let myChart = echarts.init(document.getElementById('chartZpgw1'))
               myChart.setOption({
@@ -57,16 +57,30 @@ export default {
                   },
                   left: "center",
                 },
+                tooltip: {
+                  trigger: "axis",
+                  axisPointer: {
+                    type: "shadow",
+                  },
+                },//鼠标悬浮的提示框组件 
                 xAxis: {
                     type: 'category',
-                    data: xdata
+                    data: xdata,
+                    axisLabel: {
+                        interval:0,//横轴信息全部显示
+                        rotate:-90,//-30度角倾斜显示  
+                    }
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value}%',
+                    }
                 },
                 series: [{
                     data: ydata,
-                    type: 'bar'
+                    type: 'bar',
+                    barCategoryGap: "1%",
                 }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
               })
 
