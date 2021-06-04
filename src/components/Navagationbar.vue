@@ -3,9 +3,10 @@
         <div class="row" id="nav">
             <div class="col-3" id="nav1">
                 <div class="nav flex-column nav-pills btn_xs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" v-bind:class="xyjfClass">{{xyjf}}</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" v-bind:class="zpgcClass">{{zpgc}}</a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" v-bind:class="zpgwClass">{{zpgw}}</a>
+                <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" v-bind:class="xyjfClass" v-on:click="xyjfrouter">{{xyjf}}</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#/zpgc1" role="tab" aria-controls="v-pills-profile" aria-selected="false" v-bind:class="zpgcClass" v-on:click="zpgcrouter">{{zpgc}}</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#/" role="tab" aria-controls="v-pills-profile" aria-selected="false" v-bind:class="gcccClass">{{gccc}}</a>
+                <a class="nav-link" id="v-pills-settings-tab" datia-toggle="pill" href="#/zpgw" role="tab" aria-controls="v-pills-settings" aria-selected="false" v-bind:class="zpgwClass" v-on:click="zpgwrouter">{{zpgw}}</a>
                 <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" v-bind:class="gwccClass">{{gwcc}}</a>
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" v-bind:class="wjxdClass">{{wjxd}}</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" v-bind:class="wmgzzClass">{{wmgzz}}</a>
@@ -21,6 +22,7 @@
     </div>
 </template>
 <script>
+
 export default {
    data(){
        return {
@@ -39,7 +41,26 @@ export default {
            jfyx:"质量生态持续模块积分运行",
        }
    },
-   props:["xyjfClass","zpgcClass","gcccClass","zpgwClass","gwccClass","wjxdClass","wmgzzClass","ztyxClass","dtnszClass","ssfxClass","yjbxClass","yxzsClass","jfyxClass"] 
+   mounted(){
+       this.$axios({
+              method:"get",
+              url:'http://localhost:8090/a1',
+              }).then((res)=>{
+                  console.log(res.data)
+              })
+   },
+   props:["xyjfClass","zpgcClass","gcccClass","zpgwClass","gwccClass","wjxdClass","wmgzzClass","ztyxClass","dtnszClass","ssfxClass","yjbxClass","yxzsClass","jfyxClass"],
+   methods:{
+       xyjfrouter:function(event){
+           window.location.href="http://localhost:8080/#/xyjf"
+       },
+       zpgwrouter:function(event){
+           window.location.href="http://localhost:8080/#/zpgw"
+       },
+       zpgcrouter:function(event){
+          window.location.href="http://localhost:8080/#/zpgc1" 
+       }
+   }
 }
 </script>
 <style>

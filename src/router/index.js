@@ -1,22 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Navagationbar from '@/components/Navagationbar'
+import Login from '@/components/Login'
 import TopCard from '@/components/TopCard'
-import zpgw from '@/components/zpgw' 
+import zpgc1 from '@/components/zpgc1'
+import zpgc2 from '@/components/zpgc2'  
+import zpgw from '@/components/zpgw'
+import xyjf from '@/components/xyjf' 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/Nav',
-      name: 'Navagationbar',
-      component: Navagationbar
+      name: 'Login',
+      component: Login
     },
     {
       path: '/Top',
@@ -27,6 +24,21 @@ export default new Router({
       path: '/zpgw',
       name: 'zpgw',
       component: zpgw
-    } 
+    },
+    {
+      path: '/zpgc1',
+      name: 'zpgc1',
+      component: zpgc1
+    },
+    {
+      path: '/zpgc2',
+      name: 'zpgc2',
+      component: zpgc2
+    },
+    {
+      path: '/xyjf',
+      name: 'xyjf',
+      component: xyjf
+    }
   ]
 })
