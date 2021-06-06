@@ -7,14 +7,17 @@ import router from './router'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
+import Display from '@/global'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
+Vue.prototype.display=Display
+
 axios.defaults.withCredentials=true;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
 })

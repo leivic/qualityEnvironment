@@ -1,5 +1,5 @@
 <template>
-    <div>  
+    <div> 
             <top></top>
             <snav zpgwClass="active"></snav>
             <div id="chartZpgw1" style="{width: '75%', height: '400px'}"></div>

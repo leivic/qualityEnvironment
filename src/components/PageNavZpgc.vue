@@ -8,7 +8,10 @@
 </template>
 <script>
 export default {
-    
+ created(){
+   console.log("测试执行顺序")
+   
+ }   
 }
 </script>
 <style>

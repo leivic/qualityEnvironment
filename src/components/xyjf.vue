@@ -1,8 +1,8 @@
 <template>
     <div>
         <top></top>
-        <snav xyjfClass="active"></snav>
-        <div> 质量信用积分预设页面</div>
+        <snav xyjfClass="active">是不是因为啥都没有才不加载</snav>
+        <div></div>
     </div>
 </template>
 <script>
