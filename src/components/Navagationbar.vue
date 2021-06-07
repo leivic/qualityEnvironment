@@ -16,6 +16,7 @@
                 <a class="nav-link nav-link11" v-if="display11"  id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" v-bind:class="yjbxClass">{{yjbx}}</a>
                 <a class="nav-link nav-link12" v-if="display12"  id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" v-bind:class="yxzsClass">{{yxzs}}</a>
                 <a class="nav-link nav-link13" v-if="display13"  id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" v-bind:class="jfyxClass">{{jfyx}}</a>
+                <a class="nav-link nav-link14" v-if="display14"  id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" v-bind:class="glyClass"v-on:click="glyrouter">{{gly}}</a>
                 </div>
             </div>
         </div>
@@ -41,6 +42,7 @@ export default {
            yjbx:"各区域质量内部损失业绩表现",
            yxzs:"月度运行走势",
            jfyx:"质量生态持续模块积分运行",
+           gly:"管理员",
            display1: this.display.display1,
            display2: this.display.display2,
            display3: this.display.display3,
@@ -54,6 +56,7 @@ export default {
            display11: this.display.display11,
            display12: this.display.display12,
            display13: this.display.display13,
+           display14: this.display.display14
        }
    },
    mounted(){
@@ -88,7 +91,7 @@ export default {
               console.log(this.display.display5)
               
    },
-   props:["xyjfClass","zpgcClass","gcccClass","zpgwClass","gwccClass","wjxdClass","wmgzzClass","ztyxClass","dtnszClass","ssfxClass","yjbxClass","yxzsClass","jfyxClass"],
+   props:["xyjfClass","zpgcClass","gcccClass","zpgwClass","gwccClass","wjxdClass","wmgzzClass","ztyxClass","dtnszClass","ssfxClass","yjbxClass","yxzsClass","jfyxClass","glyClass"],
    methods:{
        xyjfrouter:function(event){
            window.location.href="http://localhost:8080/#/xyjf"
@@ -98,7 +101,10 @@ export default {
        },
        zpgcrouter:function(event){
           window.location.href="http://localhost:8080/#/zpgc1" 
-       }
+       },
+       glyrouter:function(event){
+          window.location.href="http://localhost:8080/#/gly" 
+       },
    }
 }
 </script>

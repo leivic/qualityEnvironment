@@ -11,6 +11,9 @@ let display10=false;
 let display11=false;
 let display12=false;
 let display13=false;
+let display14=false;
+let username="未登录";
+let role="未登录 ";
 export default{
     display1,
     display2,
@@ -25,4 +28,7 @@ export default{
     display11,
     display12,
     display13,
+    username,
+    role,
+    display14
 }

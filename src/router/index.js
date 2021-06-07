@@ -5,7 +5,8 @@ import TopCard from '@/components/TopCard'
 import zpgc1 from '@/components/zpgc1'
 import zpgc2 from '@/components/zpgc2'  
 import zpgw from '@/components/zpgw'
-import xyjf from '@/components/xyjf' 
+import xyjf from '@/components/xyjf'
+import gly from '@/components/gly' 
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +40,11 @@ export default new Router({
       path: '/xyjf',
       name: 'xyjf',
       component: xyjf
+    },
+    {
+      path: '/gly',
+      name: 'gly',
+      component: gly 
     }
   ]
 })

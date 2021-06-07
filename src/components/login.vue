@@ -56,22 +56,15 @@ export default {
               url:'http://localhost:8090/a1',
               }).then((res)=>{
                   console.log(res.data);
+                  this.display.username=res.data.username
                   switch (res.data.authorities[0].authority){
                       case "ROLE_admin":
                           that.display.display1=true,
                           that.display.display2=true,
                           that.display.display3=true,
-                          that.display.display4=true
-                          console.log(this.display.display1),
-                          console.log(this.display.display2),
-                          console.log(this.display.display3),
-                          console.log(this.display.display4),
-                          console.log(this.display.display5),
-                          console.log(this.display.display20)
-                          window.location.href="http://localhost:8080/#/zpgw"
-                      case "ROLE_user":
-                          that.display.display1=true,
-                          that.display.display2=true,
+                          that.display.display4=true,
+                          that.display.display14=true,
+                          that.display.role="管理员"
                           console.log(this.display.display1),
                           console.log(this.display.display2),
                           console.log(this.display.display3),
@@ -79,6 +72,19 @@ export default {
                           console.log(this.display.display5),
                           console.log(this.display.display20)
                           window.location.href="http://localhost:8080/#/xyjf"
+                            break;
+                      case "ROLE_user":
+                          that.display.display1=true,
+                          that.display.display4=true,
+                          that.display.role="普通用户"
+                          console.log(this.display.display1),
+                          console.log(this.display.display2),
+                          console.log(this.display.display3),
+                          console.log(this.display.display4),
+                          console.log(this.display.display5),
+                          console.log(this.display.display20)
+                          window.location.href="http://localhost:8080/#/xyjf"
+                           break;
                            }
               })
         }

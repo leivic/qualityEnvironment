@@ -35,6 +35,7 @@ export default {
   mounted(){
     let myChart = echarts.init(document.getElementById('chartZpgw1'))
     Echart1 = myChart
+   
     var that = this;
     this.$axios({
               method:"post",
@@ -51,6 +52,7 @@ export default {
               console.log(xdata);
               ydata.push(res.data[i].percentage*100)//传过来的是小数，转百分比
             }
+              
               Echart1.setOption({
                 title: {
                   text:"质量生态环境"+that.month+"月工位符合率",
@@ -85,7 +87,6 @@ export default {
                     barCategoryGap: "1%",
                 }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
               })
-
            })
 },
 beforeDestroy(){
