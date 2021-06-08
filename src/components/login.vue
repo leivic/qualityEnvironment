@@ -63,6 +63,7 @@ export default {
                           that.display.display2=true,
                           that.display.display3=true,
                           that.display.display4=true,
+                          that.display.display6=true,
                           that.display.display14=true,
                           that.display.role="管理员"
                           console.log(this.display.display1),

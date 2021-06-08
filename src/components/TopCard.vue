@@ -18,7 +18,7 @@ export default {
     data(){
         return{
             user: this.display.username,
-            role: this.display.role
+            role: this.display.role  /*全局变量的使用*/
         }
     }
 }

@@ -19,6 +19,9 @@ require('echarts/lib/chart/bar')
 require('echarts/lib/component/tooltip')
 require('echarts/lib/component/title')
 require('echarts/lib/component/legend')
+import { ToolboxComponent } from 'echarts/components';
+echarts.use([ToolboxComponent]);
+
 let Echart1
 export default {
 
@@ -67,6 +70,15 @@ export default {
                     type: "shadow",
                   },
                 },//鼠标悬浮的提示框组件 
+                toolbox: {
+                    feature: {
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    },
+                    right: "10%"
+                },
                 xAxis: {
                     type: 'category',
                     data: xdata,

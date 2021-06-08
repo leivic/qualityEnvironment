@@ -1,8 +1,8 @@
 <template>
  <nav aria-label="Page navigation example" id="pageNav">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#/zpgc1">1</a></li>
-    <li class="page-item"><a class="page-link" href="#/zpgc2">2</a></li>
+    <li class="page-item"><a class="page-link" :href="href1">1</a></li>
+    <li class="page-item"><a class="page-link" :href="href2">2</a></li>
   </ul>
 </nav>
 </template>
@@ -11,7 +11,8 @@ export default {
  created(){
    console.log("测试执行顺序")
    
- }   
+ },
+ props:["href1","href2"]   
 }
 </script>
 <style>

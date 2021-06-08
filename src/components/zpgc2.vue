@@ -3,16 +3,16 @@
             <top></top>
             <snav zpgcClass="active"></snav>
             <div id="chartZpgc2" style="{width: '75%', height: '400px'}"></div>
-           <pagenav></pagenav>
+           <pagenav href1="#/zpgc1" href2="#/zpgc2"></pagenav><!--子组件的属性几乎都可以绑定-->
     </div>
 </template>
 <script>
 import snav from "./Navagationbar"
 import top from "./TopCard"
-import pagenav from "./PageNavZpgc"     
+import pagenav from "./PageNav"     
 let echarts = require('echarts/lib/echarts')
 import { GridComponent } from 'echarts/components';
-import PageNav from './PageNavZpgc.vue'
+import PageNav from './PageNav.vue'
 echarts.use([GridComponent]);
 // 引入柱状图组件 我是使用npm install echarts 安装最新版的echarts 版本不一样
 //引入可能也会有一些差别 

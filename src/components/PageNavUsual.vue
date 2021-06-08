@@ -3,7 +3,7 @@
         <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link"  aria-label="Previous" :href="href1">
+      <a class="page-link"  aria-label="Previous" :href="href1" :onclick="click1">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
@@ -21,7 +21,7 @@
 </template>
 <script>
 export default {
-    props:["href1","href2","href3","href4","href5"]
+    props:["href1","href2","href3","href4","href5","click1"]
 }
 </script>
 <style>

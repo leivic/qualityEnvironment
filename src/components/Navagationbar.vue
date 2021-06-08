@@ -8,7 +8,7 @@
                 <a class="nav-link nav-link3" v-if="display3"  id="v-pills-profile-tab" data-toggle="pill" href="#/" role="tab" aria-controls="v-pills-profile" aria-selected="false" v-bind:class="gcccClass">{{gccc}}</a>
                 <a class="nav-link nav-link4" v-if="display4"  id="v-pills-settings-tab" datia-toggle="pill" href="#/zpgw" role="tab" aria-controls="v-pills-settings" aria-selected="false" v-bind:class="zpgwClass" v-on:click="zpgwrouter">{{zpgw}}</a>
                 <a class="nav-link nav-link5" v-if="display5"  id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" v-bind:class="gwccClass">{{gwcc}}</a>
-                <a class="nav-link nav-link6" v-if="display6"  id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" v-bind:class="wjxdClass">{{wjxd}}</a>
+                <a class="nav-link nav-link6" v-if="display6"  id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" v-bind:class="wjxdClass" @click="windowhref(wjxd1)">{{wjxd}}</a>
                 <a class="nav-link nav-link7" v-if="display7"  id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" v-bind:class="wmgzzClass">{{wmgzz}}</a>
                 <a class="nav-link nav-link8" v-if="display8"  id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" v-bind:class="ztyxClass">{{ztyx}}</a>
                 <a class="nav-link nav-link9" v-if="display9"  id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" v-bind:class="dtnszClass">{{dtnsz}}</a>
@@ -56,7 +56,8 @@ export default {
            display11: this.display.display11,
            display12: this.display.display12,
            display13: this.display.display13,
-           display14: this.display.display14
+           display14: this.display.display14,
+           wjxd1:"http://localhost:8080/#/wjxd1" 
        }
    },
    mounted(){
@@ -105,6 +106,9 @@ export default {
        glyrouter:function(event){
           window.location.href="http://localhost:8080/#/gly" 
        },
+       windowhref(option){
+           window.location.href=option
+       }
    }
 }
 </script>

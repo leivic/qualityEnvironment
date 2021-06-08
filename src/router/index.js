@@ -6,7 +6,10 @@ import zpgc1 from '@/components/zpgc1'
 import zpgc2 from '@/components/zpgc2'  
 import zpgw from '@/components/zpgw'
 import xyjf from '@/components/xyjf'
-import gly from '@/components/gly' 
+import gly from '@/components/gly'
+import adduser from '@/components/AddUser' 
+import wjxd1 from '@/components/wjxd1'
+import wjxd2 from '@/components/wjxd2'
 Vue.use(Router)
 
 export default new Router({
@@ -45,6 +48,21 @@ export default new Router({
       path: '/gly',
       name: 'gly',
       component: gly 
-    }
+    },
+    {
+      path: '/adduser',
+      name: 'adduser',
+      component: adduser 
+    },
+    {
+      path: '/wjxd1',
+      name: 'wjxd1',
+      component: wjxd1
+    },
+    {
+      path: '/wjxd2',
+      name: 'wjxd2',
+      component: wjxd2
+    },
   ]
 })
