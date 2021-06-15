@@ -6,10 +6,13 @@ import zpgc1 from '@/components/zpgc1'
 import zpgc2 from '@/components/zpgc2'  
 import zpgw from '@/components/zpgw'
 import xyjf from '@/components/xyjf'
-import gly from '@/components/gly'
+import adminyhxx from '@/components/adminyhxx'
 import adduser from '@/components/AddUser' 
 import wjxd1 from '@/components/wjxd1'
 import wjxd2 from '@/components/wjxd2'
+import nav from '@/components/Nav'
+import test from '@/components/test'
+import glyzpgw from '@/components/admin/glyzpgw'
 Vue.use(Router)
 
 export default new Router({
@@ -45,9 +48,9 @@ export default new Router({
       component: xyjf
     },
     {
-      path: '/gly',
+      path: '/adminyhxx',
       name: 'gly',
-      component: gly 
+      component: adminyhxx
     },
     {
       path: '/adduser',
@@ -63,6 +66,21 @@ export default new Router({
       path: '/wjxd2',
       name: 'wjxd2',
       component: wjxd2
+    },
+    {
+      path: '/nnav',
+      name: 'nnav',
+      component: nav
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: test
+    },
+    {
+      path: '/glyzpgw',
+      name: 'TopCard',
+      component: glyzpgw
     },
   ]
 })

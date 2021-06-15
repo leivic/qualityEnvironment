@@ -1,12 +1,12 @@
 <template>
     <div>
         <top></top>
-        <snav xyjfClass="active">是不是因为啥都没有才不加载</snav>
+        <snav styxyjf="color:#696969">是不是因为啥都没有才不加载</snav>
         <div></div>
     </div>
 </template>
 <script>
-import snav from "./Navagationbar"
+import snav from "./Nav"
 import top from "./TopCard"     
 let echarts = require('echarts/lib/echarts')
 import { GridComponent } from 'echarts/components';

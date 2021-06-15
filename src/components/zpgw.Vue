@@ -1,13 +1,13 @@
 <template>
     <div> 
             <top></top>
-            <snav zpgwClass="active"></snav>
+            <snav stysthj="color:#696969"></snav>
             <div id="chartZpgw1" style="{width: '75%', height: '400px'}"></div>
     </div>
 </template>
 
 <script>
-import snav from "./Navagationbar"
+import snav from "./Nav"
 import top from "./TopCard"     
 let echarts = require('echarts/lib/echarts')
 import { GridComponent } from 'echarts/components';

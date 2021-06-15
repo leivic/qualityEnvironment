@@ -17,7 +17,7 @@
 export default {
     data(){
         return{
-            user: this.display.username,
+            user: this.display.username, /*js的this指向 这里的this指的是当前实例 所以指的是这个页面topcard的vue实例 并不是根实例*/
             role: this.display.role  /*全局变量的使用*/
         }
     }

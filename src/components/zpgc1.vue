@@ -1,13 +1,13 @@
 <template>
     <div>
             <top></top>
-            <snav zpgcClass="active"></snav>
+            <snav stysthj="color:#696969"></snav>
             <div id="chartZpgc1" style="{width: '75%', height: '400px'}"></div>
            <pagenav href1="#/zpgc1" href2="#/zpgc2"></pagenav>
     </div>
 </template>
 <script>
-import snav from "./Navagationbar"
+import snav from "./Nav"
 import top from "./TopCard"
 import pagenav from "./PageNav"     
 let echarts = require('echarts/lib/echarts')

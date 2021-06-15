@@ -1,15 +1,14 @@
 <template>
     <div> 
             <top></top>
-            <snav glyClass="active"></snav>
+            <snav styadmin="color:#696969"></snav>
             <adduser id="adduser"></adduser>
-            <div id="gly1" style="{width: '37.5%', height: '400px'}">
+            <div id="gly1" style="{width: '75%', height: '400px'}">
                 <div id="gly1top">
                     <div id="gly1topleft">
                         <h3>用户信息管理</h3>
                     </div>
                     <div id="gly1topright ">
-                   <button type="button" class="btn btn-primary">删除</button>
                    <button type="button" class="btn btn-primary" @click="moadl()">新增</button>
                     </div><!--@click 绑定事件函数的一种写法 方法直接写在methods里面 moadl()括号里是
                     可以直接传参的 number和字符串都可以直接放 甚至可以放变量 比如moadl(text) 
@@ -24,6 +23,7 @@
                     <th scope="col">姓名</th>
                     <th scope="col">用户名</th>
                     <th scope="col">权限</th>
+                    <th scope="col">#</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +35,11 @@
                     <td>{{item.xingming}}</td>
                     <td>{{item.username}}</td>
                     <td>{{item.role_name}}</td>
+                    <td>
+                        <a href="#" @click="a(item.id)">
+                            删除
+                        </a><!--链接由此获得数据库id  item.id本就是从数据库取出来的-->
+                    </td>
                     </tr>
                 </tbody>
                 </table>
@@ -62,7 +67,7 @@
     </div>
 </template>
 <script>
-import snav from "./Navagationbar"
+import snav from "./Nav"
 import top from "./TopCard"
 import adduser from "./AddUser.vue" 
 export default {
@@ -113,6 +118,9 @@ export default {
       moadl(){
           var a =document.getElementsByClassName("modal")[0]/*根据类名取dom 取出来是一个集合*/
           a.style.display="block" //操作dom元素 用js动态改变dom元素的style样式  这里是基于点击事件绑定一个函数改变样式 应用场景：弹窗
+      },
+      a(data){
+          console.log(data)
       }
   }
 }
@@ -120,7 +128,7 @@ export default {
 <style>
     #gly1{
     float: right;
-    width: 37%;
+    width: 75%;
     height: 500px;
     margin: 10px 10px 0px 20px;
     position: relative;
@@ -132,7 +140,7 @@ export default {
   #gly1topleft{
       float: left;
       height: 100%;
-      width: 57%;
+      width: 25%;
      
       text-align: center;
       line-height: 100%;
