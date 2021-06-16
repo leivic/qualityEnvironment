@@ -12,7 +12,7 @@ import Display from '@/global'
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.prototype.display=Display //vue是一个构造函数 可以预想vue这个函数内部必然有this  然后通过new 就成了构造函数 
-//通过构造函数的原型 可以让用vue这个构造函数创建的不同实例间共享属性  每个组件就是创建的不同实例 所以实现了全局变量
+//通过构造函数的原型 可以让用vue这个构造函数创建的不同实例间共享属性  每个组件就是创建的不同实例 所以实现了全局变
 
 axios.defaults.withCredentials=true;
 /* eslint-disable no-new */

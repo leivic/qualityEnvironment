@@ -11,7 +11,7 @@
 			  <form>
 				<div class="glyzpgwrightbox">
 				
-				<input type="file" id="exampleFormControlFile1">
+				<input type="file" id="exampleFormControlFile1" @change="upload()" accept=".xlsx">
 				</div>
 				</form>
                     </div>
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in tabledata"><!--v for的最基础用法  这里要循环的是
+                    <tr v-for="item in tabledata" v-if="isShow"><!--v for的最基础用法  这里要循环的是
                     这个tr，这一行 当然也包括行里的每一个单元格 所以在行上v－for 在单元格上取值 tabledata是直接绑定在
                     下面data里面的数组数据 item就代表每一项 应用场景：1.动态获取相同格式数据时 2.接收后端列表，循环取出每一条时
                     item.id 直接和对象数组的用法一样的 item就是每个对象 可以使用.语法 取属性 -->
@@ -49,7 +49,7 @@
 		    <th scope="col">{{item.pinShenQuYu}}</th>
 		    <th scope="col">{{item.pinShenShiJian}}</th>
                     <td>
-                        <a href="#" @click="a(item.id)">
+                        <a href="#" @click="delet(item.id)">
                             删除
                         </a><!--链接由此获得数据库id  item.id本就是从数据库取出来的-->
                     </td>
@@ -66,7 +66,8 @@ import top from "./../TopCard"
 export default {
 data(){
 return{
-	tabledata:[]
+    tabledata:[],
+    isShow:true
 }
 },
 components: {
@@ -77,14 +78,64 @@ components: {
       this.$axios({
 	      method:"post",
 	      params:{
-                  date:"2021-06"
+                  pageNum:"1"
               },
-              url:'http://localhost:8090/selectGongWeiFuHeListByDate',
+              url:'http://localhost:8090/selectAllGongWeiFuHe',
               }).then((res)=>{
                   console.log(res.data)
                   this.tabledata=res.data //生命周期里面的ajax里面的this仍然指向 当前页面对象
               })
   },
+  methods:{
+      upload(){//上传文件功能
+         var e =document.getElementById("exampleFormControlFile1")
+         console.log(e.files[0])//e是input这个dom元素 e.files[0]是我们上传的文件
+         let file=e.files[0]
+         let formdata = new FormData(); //以formdata的格式上传 
+         formdata.append("file",file);
+         this.$axios({
+	      method:"post",
+	      data:formdata,
+              url:'http://localhost:8090/exportGongWeiFuHe',
+              }).then((res)=>{
+                  console.log(res.data)
+              })
+         this.reloaddata()
+         this.reload()
+      },
+      delet(id){//删除记录功能 
+          this.$axios({
+          method:"post",
+          params:{ 
+            id:id
+          },
+              url:'http://localhost:8090/deleteGongWeiFuHeById',
+              }).then((res)=>{
+                  console.log(res.data)
+              }),
+          this.reloaddata()
+          this.reload()
+      },
+      reloaddata(){//重新加载 表格中的数据 更改vue对象 data中绑定的值 然后 由于vue数据双向绑定 会动态更新 
+         this.$axios({
+	      method:"post",
+	      params:{
+                  pageNum:"1"
+              },
+              url:'http://localhost:8090/selectAllGongWeiFuHe',
+              }).then((res)=>{
+                  console.log(res.data)
+                  this.tabledata=res.data 
+              }) 
+         
+      },
+      reload () {
+      this.isShow= false
+      this.$nextTick(function () {
+        this.isShow= true
+      })
+    }
+  }
 }
 </script>
 <style>
