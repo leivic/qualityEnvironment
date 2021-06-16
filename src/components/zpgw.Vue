@@ -3,12 +3,15 @@
             <top></top>
             <snav stysthj="color:#696969"></snav>
             <div id="chartZpgw1" style="{width: '75%', height: '400px'}"></div>
+            <div id="monthpickkerbox">
+              <el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
+            </div>
     </div>
 </template>
 
 <script>
 import snav from "./Nav"
-import top from "./TopCard"     
+import top from "./TopCard" 
 let echarts = require('echarts/lib/echarts')
 import { GridComponent } from 'echarts/components';
 echarts.use([GridComponent]);
@@ -27,7 +30,7 @@ export default {
 
   data(){
     return {
-      month:"4"
+      month1:"2021-06"
     }
     
   },
@@ -36,75 +39,45 @@ export default {
     top,
   },
   mounted(){
-    let myChart = echarts.init(document.getElementById('chartZpgw1'))
-    Echart1 = myChart
-   
-    var that = this;
-    this.$axios({
+      this.$axios({
               method:"post",
-              url:'http://localhost:8090/selectModel3ByMonth',
-              data:{
-                  month:this.month
+              url:'http://localhost:8090/selectGongWeiFuHeListByDate',
+              params:{
+                  date:this.month1,
+                  pingShengXingZhi:"自查" //
               }
-          }).then((res)=>{
-            console.log(res.data);
-            var xdata=[];
-            var ydata=[];
-            for (let i=0;i<res.data.length;i++){
-              xdata.push(res.data[i].station)
-              console.log(xdata);
-              ydata.push(res.data[i].percentage*100)//传过来的是小数，转百分比
-            }
-              
-              Echart1.setOption({
-                title: {
-                  text:"质量生态环境"+that.month+"月工位符合率",
-                  textStyle:{
-                    fontSize:22
-                  },
-                  left: "center",
-                },
-                tooltip: {
-                  trigger: "axis",
-                  axisPointer: {
-                    type: "shadow",
-                  },
-                },//鼠标悬浮的提示框组件 
-                toolbox: {
-                    feature: {
-                        dataView: {show: true, readOnly: false},
-                        magicType: {show: true, type: ['line', 'bar']},
-                        restore: {show: true},
-                        saveAsImage: {show: true}
-                    },
-                    right: "10%"
-                },
-                xAxis: {
-                    type: 'category',
-                    data: xdata,
-                    axisLabel: {
-                        interval:0,//横轴信息全部显示
-                        rotate:-90,//-30度角倾斜显示  
-                    }
-                },
-                yAxis: {
-                    type: 'value',
-                    axisLabel: {
-                        formatter: '{value}%',
-                    }
-                },
-                series: [{
-                    data: ydata,
-                    type: 'bar',
-                    barCategoryGap: "1%",
-                }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
+              }).then((res)=>{
+                  console.log(res.data)
+                  var xdata=[]
+                  var ydata=[]
+                  for(let i=0;i<res.data.length;i++){
+                    
+                      xdata.push(res.data[i].pinShenQuYu+res.data[i].stationName)
+                      ydata.push(res.data[i].stationPercentage)
+                    
+
+                  }
+                  console.log(xdata)
+                  console.log(ydata)//获得echarts中x轴和y轴的data数据 
               })
-           })
-},
-beforeDestroy(){
-  let Echart1 =null
+  },
+  watch:{
+     month1(newVal,oldVal){//更改月份的时候 由于month1双向绑定 所以元素里的month1改变 data里的也会改 
+          console.log(newVal, oldVal);
+          this.$axios({
+              method:"post",
+              url:'http://localhost:8090/selectGongWeiFuHeListByDate',
+              params:{
+                  date:this.month1,
+                  pingShengXingZhi:"自查" //
+              }
+              }).then((res)=>{
+                  console.log(res.data)
+              }) 
+      }
+  }
 }
-}
+
 </script>
 <style>
   #chartZpgw1{
@@ -112,5 +85,14 @@ beforeDestroy(){
     width: 75%;
     height: 500px;
     margin: 10px 10px 0px 20px;
+    border: 1px solid black;
+  }
+  #monthpickkerbox{
+    position: absolute;
+    left: 25%;
+  }
+  #monthpicker{
+    border:none;
+    background: none;
   }
 </style>

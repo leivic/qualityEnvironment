@@ -16,9 +16,11 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "echarts": "^5.1.1",
+    "element-ui": "^2.15.2",
     "jquery": "^2.2.4",
     "popper.js": "^1.16.1",
     "vue": "^2.5.2",
+    "vue-month-picker": "^1.5.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

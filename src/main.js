@@ -8,7 +8,10 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import Display from '@/global'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css' 
 
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.prototype.display=Display //vue是一个构造函数 可以预想vue这个函数内部必然有this  然后通过new 就成了构造函数 
