@@ -5,7 +5,7 @@
 		<div id="gly1" style="{width: '75%', height: '400px'}">
                 <div id="gly1top">
                     <div id="gly1topleft">
-                        <h3>工位信息管理</h3>
+                        <h3>过程信息管理</h3>
                     </div>
                     <div id="gly1topright ">
 			  <form>
@@ -24,9 +24,9 @@
                     <th scope="col">工作模块</th>
                     <th scope="col">自评/抽查</th>
                     <th scope="col">评审内容</th>
-                    <th scope="col">工位名称</th>
-		    <th scope="col">适用条款</th>
-                    <th scope="col">符合条款</th>
+                    <th scope="col">过程名称</th>
+		    <th scope="col">过程配分</th>
+                    <th scope="col">过程得分</th>
                     <th scope="col">符合率</th>
 		    <th scope="col">评审区域</th>
                     <th scope="col">评审时间</th>
@@ -40,12 +40,12 @@
                     item.id 直接和对象数组的用法一样的 item就是每个对象 可以使用.语法 取属性 -->
                     <th scope="row" >{{item.id}}</th>
                     <th scope="col">{{item.workModel}}</th>
-                    <th scope="col">{{item.ziPingORChouCha}}</th>
+                    <th scope="col">{{item.ziPinOrChouCha}}</th>
                     <th scope="col">{{item.review}}</th>
-                    <th scope="col">{{item.stationName}}</th>
-		    <th scope="col">{{item.applicableTerms}}</th>
-                    <th scope="col">{{item.meetTheTerms}}</th>
-                    <th scope="col">{{item.stationPercentage}}</th>
+                    <th scope="col">{{item.guoChenMinChen}}</th>
+		    <th scope="col">{{item.guoChenPeiFen}}</th>
+                    <th scope="col">{{item.guoChenDeFen}}</th>
+                    <th scope="col">{{item.guoChenPercentage}}</th>
 		    <th scope="col">{{item.pinShenQuYu}}</th>
 		    <th scope="col">{{item.pinShenShiJian}}</th>
                     <td>
@@ -80,7 +80,7 @@ components: {
 	      params:{
                   pageNum:"1"
               },
-              url:'http://localhost:8090/selectAllGongWeiFuHe',
+              url:'http://localhost:8090/selectAllGuoChenFuHe',
               }).then((res)=>{
                   console.log(res.data)
                   this.tabledata=res.data //生命周期里面的ajax里面的this仍然指向 当前页面对象
@@ -96,7 +96,7 @@ components: {
          this.$axios({
 	      method:"post",
 	      data:formdata,
-              url:'http://localhost:8090/exportGongWeiFuHe',
+              url:'http://localhost:8090/exportGuoChenFuHe',
               }).then((res)=>{
                   console.log(res.data)
               })
@@ -109,7 +109,7 @@ components: {
           params:{ 
             id:id
           },
-              url:'http://localhost:8090/deleteGongWeiFuHeById',
+              url:'#',
               }).then((res)=>{
                   console.log(res.data)
               }),
@@ -119,10 +119,7 @@ components: {
       reloaddata(){//重新加载 表格中的数据 更改vue对象 data中绑定的值 然后 由于vue数据双向绑定 会动态更新 
          this.$axios({
 	      method:"post",
-	      params:{
-                  pageNum:"1"
-              },
-              url:'http://localhost:8090/selectAllGongWeiFuHe',
+              url:'http://localhost:8090/selectAllGuoChenFuHe',
               }).then((res)=>{
                   console.log(res.data)
                   this.tabledata=res.data 

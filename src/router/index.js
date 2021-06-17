@@ -14,6 +14,7 @@ import nav from '@/components/Nav'
 import test from '@/components/test'
 import glyzpgw from '@/components/admin/glyzpgw'
 import gwcc from '@/components/gwcc'
+import glygccc from '@/components/admin/glygccc'
 Vue.use(Router)
 
 export default new Router({
@@ -87,6 +88,11 @@ export default new Router({
       path: '/gwcc',
       name: 'gwcc',
       component: gwcc
+    },
+    {
+      path: '/glygccc',
+      name: 'glygccc',
+      component: glygccc
     },
   ]
 })

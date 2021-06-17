@@ -34,6 +34,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="http://localhost:8080/#/adminyhxx">用户信息管理</a>
                     <a class="dropdown-item" href="http://localhost:8080/#/glyzpgw">工位信息管理</a>
+                     <a class="dropdown-item" href="http://localhost:8080/#/glygccc">过程信息管理</a>
                 </div>
             </li>
         </ul>
