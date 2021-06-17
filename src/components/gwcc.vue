@@ -47,7 +47,7 @@ export default {
               url:'http://localhost:8090/getLastGongWeiData',
               params:{
                   date:this.month1,
-                  pingShengXingZhi:"自查" //
+                  pingShengXingZhi:"抽查" //
               }
               }).then((res)=>{
                   console.log(res.data)
@@ -65,7 +65,7 @@ export default {
                   
                   Echart1.setOption({
                 title: {
-                  text:"质量生态环境"+that.month1+"月自评工位符合率",
+                  text:"质量生态环境"+that.month1+"月工位抽查符合率",
                   textStyle:{
                     fontSize:22
                   },
@@ -112,18 +112,18 @@ export default {
   },
   watch:{
      month1(newVal,oldVal){//更改月份的时候 由于month1双向绑定 所以元素里的month1改变 data里的也会改 
-          console.log(newVal, oldVal);
-          var that=this;
+	  console.log(newVal, oldVal);
+	  var that=this;
           this.$axios({
               method:"post",
               url:'http://localhost:8090/getLastGongWeiData',
               params:{
                   date:this.month1,
-                  pingShengXingZhi:"自查" //
+                  pingShengXingZhi:"抽查" //
               }
               }).then((res)=>{
                   console.log(res.data)
-                  var xdata=[]
+	    	  var xdata=[]
                   var ydata=[]
                   for(let i=0;i<res.data.length;i++){
                     
@@ -133,9 +133,9 @@ export default {
                   console.log(xdata)
                   console.log(ydata)//获得echarts中x轴和y轴的data数据
                   Echart1.setOption({
-                    title: {
-                      text:"质量生态环境"+that.month1+"月自评工位符合率",
-                    },
+		title: {
+                  text:"质量生态环境"+that.month1+"月工位抽查符合率"
+                },
                     xAxis: {
                     data: xdata,
                 },

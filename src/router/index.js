@@ -13,6 +13,7 @@ import wjxd2 from '@/components/wjxd2'
 import nav from '@/components/Nav'
 import test from '@/components/test'
 import glyzpgw from '@/components/admin/glyzpgw'
+import gwcc from '@/components/gwcc'
 Vue.use(Router)
 
 export default new Router({
@@ -81,6 +82,11 @@ export default new Router({
       path: '/glyzpgw',
       name: 'TopCard',
       component: glyzpgw
+    },
+    {
+      path: '/gwcc',
+      name: 'gwcc',
+      component: gwcc
     },
   ]
 })
