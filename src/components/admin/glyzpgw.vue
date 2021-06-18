@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<top></top>
-		<snav styadmin="color:#696969"></snav>
+		<snav styadmin="color:#696969"></snav><!--子组件绑定值在props里面 传到父组件参数成了标签的属性-->
 		<div id="gly1" style="{width: '75%', height: '400px'}">
                 <div id="gly1top">
                     <div id="gly1topleft">
@@ -12,7 +12,7 @@
 				<div class="glyzpgwrightbox">
 				
 				<input type="file" id="exampleFormControlFile1" @change="upload()" accept=".xlsx">
-				</div>
+				</div><!--form里面的input type=file时 处理文件上传需求 @change＝“upload（）” dom元素change事件绑定了一个upload（）方法在vue的methods里-->
 				</form>
                     </div>
                 </div>
@@ -35,10 +35,10 @@
                 </thead>
                 <tbody>
                     <tr v-for="item in tabledata" v-if="isShow"><!--v for的最基础用法  这里要循环的是
-                    这个tr，这一行 当然也包括行里的每一个单元格 所以在行上v－for 在单元格上取值 tabledata是直接绑定在
+                    这个tr，这一行 当然也包括行里的每一个单元格 所以在tr上v－for 在单元格上取值 tabledata是直接绑定在
                     下面data里面的数组数据 item就代表每一项 应用场景：1.动态获取相同格式数据时 2.接收后端列表，循环取出每一条时
                     item.id 直接和对象数组的用法一样的 item就是每个对象 可以使用.语法 取属性 -->
-                    <th scope="row" >{{item.id}}</th>
+                    <th scope="row" >{{item.id}}</th><!--注意标签里属性绑定的值 会直接绑定该值到vue model层里面的data-->
                     <th scope="col">{{item.workModel}}</th>
                     <th scope="col">{{item.ziPingORChouCha}}</th>
                     <th scope="col">{{item.review}}</th>
@@ -78,21 +78,21 @@ components: {
       this.$axios({
 	      method:"post",
 	      params:{
-                  pageNum:"1"
+                  pageNum:"1"//params data是前后端交互 不同的数据格式 
               },
               url:'http://localhost:8090/selectAllGongWeiFuHe',
               }).then((res)=>{
                   console.log(res.data)
-                  this.tabledata=res.data //生命周期里面的ajax里面的this仍然指向 当前页面对象
+                  this.tabledata=res.data //生命周期里面的ajax里面的this仍然指向 当前组件vue实例
               })
   },
   methods:{
       upload(){//上传文件功能
          var e =document.getElementById("exampleFormControlFile1")
-         console.log(e.files[0])//e是input这个dom元素 e.files[0]是我们上传的文件
+         console.log(e.files[0])//e是input这个dom元素 e.files[0]是我们上传的文件 处理文件上传需求的写法
          let file=e.files[0]
-         let formdata = new FormData(); //以formdata的格式上传 
-         formdata.append("file",file);
+         let formdata = new FormData(); //以formdata的格式上传 构造函数生成一个新对象 
+         formdata.append("file",file); //对象formdata 的.append方法 
          this.$axios({
 	      method:"post",
 	      data:formdata,

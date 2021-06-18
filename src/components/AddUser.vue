@@ -51,19 +51,19 @@
 export default {
     data(){
         return{
-           dropdownMenu:"请选择权限" 
+           dropdownMenu:"请选择权限" //vue组件实例data里面的值可以绑定在 html标签的属性值 {{}}绑定  
         }
     },
     mounted(){
      
     },
     methods:{
-        getReault(option){
+        getReault(option){ //形参的写法 
           this.dropdownMenu=option
       },
         closeForm(){
-            var a =document.getElementsByClassName("modal")[0]
-            a.style.display="none"
+            var a =document.getElementsByClassName("modal")[0]//通过getElementsByClassName获得的dom元素对象 是个数组 
+            a.style.display="none"//该dom元素对��的 style属性的display属性 dom操作css写法 
         } 
     },
        

@@ -43,7 +43,7 @@ export default {
            yxzs:"月度运行走势",
            jfyx:"质量生态持续模块积分运行",
            gly:"管理员",
-           display1: this.display.display1,
+           display1: this.display.display1,//this.display 是原型prototype里面的值 所有vue实例共同有的一个值  相当于全局变量 
            display2: this.display.display2,
            display3: this.display.display3,
            display4: this.display.display4,
@@ -104,7 +104,7 @@ export default {
           window.location.href="http://localhost:8080/#/zpgc1" 
        },
        glyrouter:function(event){
-          window.location.href="http://localhost:8080/#/gly" 
+          window.location.href="http://localhost:8080/#/gly" //页面跳转的一个写法 
        },
        windowhref(option){
            window.location.href=option

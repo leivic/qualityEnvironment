@@ -56,7 +56,7 @@
                         <li class="page-item"><a class="page-link" @click="getlist(2)">2</a></li>
                         <li class="page-item"><a class="page-link" @click="getlist(3)">3</a></li>
                         <li class="page-item">
-                        <a class="page-link"  aria-label="Next" @click="getlist(pageUserIfoNum+1)">
+                        <a class="page-link"  aria-label="Next" @click="getlist(pageUserIfoNum+1)"><!--绑定事件函数里传参的变量 需要在vue的data里注册 如下方data里的return-->
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                         </li>
@@ -111,12 +111,12 @@ export default {
               }
               }).then((res)=>{
                   console.log(res.data)
-                  that.tabledata=res.data
+                  that.tabledata=res.data //数组直接赋值 
               }) ,
-            this.pageUserIfoNum=page;
+            this.pageUserIfoNum=page;//this.变量 和变量怎么运用 注意this指向和作用域 然后数据类型正确就可以用
       },
       moadl(){
-          var a =document.getElementsByClassName("modal")[0]/*根据类名取dom 取出来是一个集合*/
+          var a =document.getElementsByClassName("modal")[0]/*根据类名取dom 取出来是一个数组*/
           a.style.display="block" //操作dom元素 用js动态改变dom元素的style样式  这里是基于点击事件绑定一个函数改变样式 应用场景：弹窗
       },
       a(data){

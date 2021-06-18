@@ -29,7 +29,7 @@ export default {
     },
     methods:{
         subm:function(event){
-            var that = this
+            var that = this //不需要that 此处的对象仍然是vue组件实例 subm是vue组件实例的一个方法 
             this.$axios({
               method:"post",
               url:'http://localhost:8090/login',

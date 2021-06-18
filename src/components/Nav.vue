@@ -42,7 +42,7 @@
 </template>
 <script>
 export default {
-props:["styxyjf","stysthj","stystys","styadmin"] 
+props:["styxyjf","stysthj","stystys","styadmin"]//vue中 html标签的属性都能绑定 不管是style href class id  value :style="thestyle" 就行 将属性绑定到model层 成了vue实例的一个data  直接在data里面的return thestyle："“赋值就成 vue里面调用直接 this.thestyle＝“”就成  
 }
 </script>
 <style>
