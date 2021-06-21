@@ -10,7 +10,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
                     <a class="dropdown-item" href="http://localhost:8080/#/zpgc1">自评过程</a>
-                    <a class="dropdown-item" href="#">过程抽查</a>
+                    <a class="dropdown-item" href="http://localhost:8080/#/gccc1">过程抽查</a>
                     <a class="dropdown-item" href="http://localhost:8080/#/zpgw">自评工位</a>
                     <a class="dropdown-item" href="http://localhost:8080/#/gwcc">工位抽查</a>
                     <a class="dropdown-item" href="http://localhost:8080/#/wjxd1">文件修订</a>

@@ -1,18 +1,21 @@
 <template>
-    <div>
+    <div> 
             <top></top>
             <snav stysthj="color:#696969"></snav>
             <div id="chartZpgc1" style="{width: '75%', height: '400px'}"></div>
-           <pagenav href1="#/zpgc1" href2="#/zpgc2"></pagenav>
+            <div id="monthpickkerbox">
+              <el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
+            </div>
+            <pagenav href1="#/zpgc1" href2="#/zpgc2"></pagenav>
     </div>
 </template>
+
 <script>
 import snav from "./Nav"
-import top from "./TopCard"
-import pagenav from "./PageNav"     
+import top from "./TopCard" 
+import pagenav from"./PageNav.vue"
 let echarts = require('echarts/lib/echarts')
 import { GridComponent } from 'echarts/components';
-import PageNav from './PageNav.vue'
 echarts.use([GridComponent]);
 // 引入柱状图组件 我是使用npm install echarts 安装最新版的echarts 版本不一样
 //引入可能也会有一些差别 
@@ -21,24 +24,51 @@ require('echarts/lib/chart/bar')
 require('echarts/lib/component/tooltip')
 require('echarts/lib/component/title')
 require('echarts/lib/component/legend')
+import { ToolboxComponent } from 'echarts/components';
+echarts.use([ToolboxComponent]);
+
 let Echart1
 export default {
-    data(){
-        return{
 
-        }
-    },
-     components: {
-        snav,
-        top,
-        pagenav
-    },
-    mounted(){
-        let myChart = echarts.init(document.getElementById('chartZpgc1'))
-        Echart1=myChart
-              Echart1.setOption({
+  data(){
+    return {
+      month1:"2021-06"
+    }
+    
+  },
+    components: {
+    snav,
+    top,
+    pagenav
+  },
+  mounted(){
+     let myChart = echarts.init(document.getElementById('chartZpgc1'))
+    Echart1 = myChart
+    var that=this
+      this.$axios({
+              method:"post",
+              url:'http://localhost:8090/GetSecondGuoChenDataByQuYu',
+              params:{
+                  date:this.month1,
+                  pingShengXingZhi:"自查" //
+              }
+              }).then((res)=>{
+                  console.log(res.data)
+                  var xdata=[]
+                  var ydata=[]
+                  for(let i=0;i<res.data.length;i++){
+                    
+                      xdata.push(res.data[i].fenLeiYiJu)
+                      ydata.push(res.data[i].guoChenpercentage*100)
+                    
+
+                  }
+                  console.log(xdata)
+                  console.log(ydata)//获得echarts中x轴和y轴的data数据
+                  
+                  Echart1.setOption({
                 title: {
-                  text:" 各区域自查过程符合率",
+                  text:"质量生态环境"+that.month1+"月自评区域过程符合率",
                   textStyle:{
                     fontSize:22
                   },
@@ -50,11 +80,21 @@ export default {
                     type: "shadow",
                   },
                 },//鼠标悬浮的提示框组件 
+                toolbox: {
+                    feature: {
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    },
+                    right: "10%"
+                },
                 xAxis: {
                     type: 'category',
-                    data: ["整车冲压","整车车身","整车涂装","整车总装","发动机机加","发动机装配"],
+                    data: xdata,
                     axisLabel: {
                         interval:0,//横轴信息全部显示
+                        rotate:-90,//-30度角倾斜显示  
                     }
                 },
                 yAxis: {
@@ -64,23 +104,70 @@ export default {
                     }
                 },
                 series: [{
-                    data: ["90","100","75","90","80","75"],
+                    data: ydata,
                     type: 'bar',
-                    barCategoryGap: "3%",
+                    barCategoryGap: "1%",
                 }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
               })
+              })
 
-    },
-    beforeDestroy(){
-        Echart1.clear()
-    }
+              
+  },
+  watch:{
+     month1(newVal,oldVal){//更改月份的时候 由于month1双向绑定 所以元素里的month1改变 data里的也会改 
+          console.log(newVal, oldVal);
+          var that=this;
+          this.$axios({
+              method:"post",
+              url:'http://localhost:8090/GetSecondGuoChenDataByQuYu',
+              params:{
+                  date:this.month1,
+                  pingShengXingZhi:"自查" //
+              }
+              }).then((res)=>{
+                  console.log(res.data)
+                  var xdata=[]
+                  var ydata=[]
+                  for(let i=0;i<res.data.length;i++){
+                    
+                      xdata.push(res.data[i].fenLeiYiJu)
+                      ydata.push(res.data[i].guoChenpercentage*100)
+                  }
+                  console.log(xdata)
+                  console.log(ydata)//获得echarts中x轴和y轴的data数据
+                  Echart1.setOption({
+                    title: {
+                      text:"质量生态环境"+that.month1+"月自评区域过程符合率",
+                    },
+                    xAxis: {
+                    data: xdata,
+                },
+                   series: [{
+                    data: ydata,
+                }]
+                  }) 
+              }) 
+      }
+  },
+  beforeDestroy(){
+          let Echart1 =null
+        }
 }
+
 </script>
-<style >
-#chartZpgc1{
+<style>
+  #chartZpgc1{
     float: right;
     width: 75%;
     height: 500px;
     margin: 10px 10px 0px 20px;
+  }
+  #monthpickkerbox{
+    position: absolute;
+    left: 25%;
+  }
+  #monthpicker{
+    border:none;
+    background: none;
   }
 </style>

@@ -2,11 +2,11 @@
     <div> 
             <top></top>
             <snav stysthj="color:#696969"></snav>
-            <div id="chartZpgc2" style="{width: '75%', height: '400px'}"></div>
+            <div id="chartGccc1" style="{width: '75%', height: '400px'}"></div>
             <div id="monthpickkerbox">
               <el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
             </div>
-            <pagenav href1="#/zpgc1" href2="#/zpgc2"></pagenav>
+            <pagenav href1="#/gccc1" href2="#/gccc2"></pagenav>
     </div>
 </template>
 
@@ -42,15 +42,15 @@ export default {
     pagenav
   },
   mounted(){
-     let myChart = echarts.init(document.getElementById('chartZpgc2'))
+     let myChart = echarts.init(document.getElementById('chartGccc1'))
     Echart1 = myChart
     var that=this
       this.$axios({
               method:"post",
-              url:'http://localhost:8090/GetSecondGuoChenDataByGuoChen',
+              url:'http://localhost:8090/GetSecondGuoChenDataByQuYu',
               params:{
                   date:this.month1,
-                  pingShengXingZhi:"自查" //
+                  pingShengXingZhi:"抽查" //
               }
               }).then((res)=>{
                   console.log(res.data)
@@ -68,7 +68,7 @@ export default {
                   
                   Echart1.setOption({
                 title: {
-                  text:"质量生态环境"+that.month1+"月自评过程符合率",
+                  text:"质量生态环境"+that.month1+"月抽查区域过程符合率",
                   textStyle:{
                     fontSize:22
                   },
@@ -119,10 +119,10 @@ export default {
           var that=this;
           this.$axios({
               method:"post",
-              url:'http://localhost:8090/GetSecondGuoChenDataByGuoChen',
+              url:'http://localhost:8090/GetSecondGuoChenDataByQuYu',
               params:{
                   date:this.month1,
-                  pingShengXingZhi:"自查" //
+                  pingShengXingZhi:"抽查" //
               }
               }).then((res)=>{
                   console.log(res.data)
@@ -137,7 +137,7 @@ export default {
                   console.log(ydata)//获得echarts中x轴和y轴的data数据
                   Echart1.setOption({
                     title: {
-                      text:"质量生态环境"+that.month1+"月自评过程符合率",
+                      text:"质量生态环境"+that.month1+"月抽查区域过程符合率",
                     },
                     xAxis: {
                     data: xdata,
@@ -156,7 +156,7 @@ export default {
 
 </script>
 <style>
-  #chartZpgc2{
+  #chartGccc1{
     float: right;
     width: 75%;
     height: 500px;

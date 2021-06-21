@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1 class="animate__animated animate__backInDown title">质量生态文明数字化平台</h1>
         <div id="loginmain">
             <form >
             <div class="form-group">
@@ -12,9 +13,10 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
             </div>
             <div id="loginbtn">
-            <button type="button" class="btn btn-primary" v-on:click="subm">提交</button>
+            <button type="button" class="btn btn-primary" v-on:click="subm">登录</button>
             </div>
             </form>
+            
         </div>
     </div>
 </template>
@@ -93,15 +95,25 @@ export default {
     
 }
 </script>
-<style>
-    #loginmain{
+<style >
+ #loginmain{
         width: 30%;
         height: 400px;
-        margin: 250px auto;
+        margin: 140px auto;
     }
     #loginbtn{
         width: 18%;
         margin-top: 5px;
         float: right;
     }
+    .title{
+        margin-top: 130px;
+        text-align: center;
+        font-size: 60px;
+        font-family: fantasy;
+        color:#444444;
+    }
+ 
+
 </style>
+   

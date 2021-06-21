@@ -3,7 +3,9 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import TopCard from '@/components/TopCard'
 import zpgc1 from '@/components/zpgc1'
-import zpgc2 from '@/components/zpgc2'  
+import zpgc2 from '@/components/zpgc2'
+import gccc1 from '@/components/gccc1'
+import gccc2 from '@/components/gccc2'    
 import zpgw from '@/components/zpgw'
 import xyjf from '@/components/xyjf'
 import adminyhxx from '@/components/adminyhxx'
@@ -15,6 +17,7 @@ import test from '@/components/test'
 import glyzpgw from '@/components/admin/glyzpgw'
 import gwcc from '@/components/gwcc'
 import glygccc from '@/components/admin/glygccc'
+import pageHelper from '@/components/util/pageHelper'
 Vue.use(Router)
 
 export default new Router({
@@ -93,6 +96,21 @@ export default new Router({
       path: '/glygccc',
       name: 'glygccc',
       component: glygccc
+    },
+    {
+      path: '/pageHelper',
+      name: 'pageHelper',
+      component: pageHelper
+    },
+    {
+      path: '/gccc1',
+      name: 'gccc1',
+      component: gccc1
+    },
+    {
+      path: '/gccc2',
+      name: 'gccc2',
+      component: gccc2
     },
   ]
 })
