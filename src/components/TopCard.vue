@@ -5,6 +5,9 @@
                 <div id="card">
                     <h1 class="card-title">SGMW质量生态文明数字化平台</h1>
                 </div>
+                <div id="imgwulin">
+
+                </div>
                 <div id="userinfo">
                     <div class="userinfobox">当前用户:{{user}}</div>
                     <div class="userinfobox">当前角色:{{role}}</div>
@@ -30,6 +33,16 @@ export default {
  #card{
      float: left;
      width: 70%;
+ }
+ #imgwulin{
+     position: absolute;
+     top:5px;
+     left: 49%;
+     width: 18%;
+     height: 85px;
+     border-radius: 150px;
+     background-image: url(../assets/wulin.jpeg);
+     background-size: 100% 100%;
  }
  #userinfo{
      float: right;

@@ -57,22 +57,34 @@
                 </tbody>
                 </table>
                 </div>
+                <div id="gly1bottom">
+                    <pagehelper id="aaaa1" :page="page" ></pagehelper><!--将传过来的属性再次绑定-->
+                </div>
 		</div>
 	</div>
 </template>
 <script>
 import snav from "./../Nav"
 import top from "./../TopCard"
+import pagehelper from "./../util/pageHelper.vue"
 export default {
 data(){
 return{
     tabledata:[],
-    isShow:true
+    isShow:true,
+    page:{
+        pageNum:1,
+        handleCurrentChange: val=> {
+            this.pageNum=val,
+            this.pageChage(val) //data里面可以绑定对象 对象的方法也可以绑定  箭头函数传参 然后调用methods里面的方法传进去
+        }
+    }
 }
 },
 components: {
     snav,
     top,
+    pagehelper
   },
   mounted(){
       this.$axios({
@@ -118,7 +130,10 @@ components: {
       },
       reloaddata(){//重新加载 表格中的数据 更改vue对象 data中绑定的值 然后 由于vue数据双向绑定 会动态更新 
          this.$axios({
-	      method:"post",
+          method:"post",
+          params:{
+                  pageNum:"1"//params data是前后端交互 不同的数据格式 
+              },
               url:'http://localhost:8090/selectAllGuoChenFuHe',
               }).then((res)=>{
                   console.log(res.data)
@@ -131,7 +146,21 @@ components: {
       this.$nextTick(function () {
         this.isShow= true
       })
-    }
+    },
+    pageChage(val){
+          this.pageNum=val
+          console.log(val)
+          this.$axios({
+	      method:"post",
+	      params:{
+                  pageNum:this.pageNum
+              },
+              url:'http://localhost:8090/selectAllGuoChenFuHe',
+              }).then((res)=>{
+                  console.log(res.data)
+                  this.tabledata=res.data 
+              })
+      }
   }
 }
 </script>
@@ -177,5 +206,8 @@ components: {
   }
   li:hover {
     cursor: pointer;
+  }
+  #aaaa1 {
+      float: right;
   }
 </style>
