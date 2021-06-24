@@ -107,6 +107,7 @@ export default {
                     data: ydata,
                     type: 'bar',
                     barCategoryGap: "1%",
+                    barWidth:20
                 }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
               })
               })
@@ -144,6 +145,7 @@ export default {
                 },
                    series: [{
                     data: ydata,
+                   
                 }]
                   }) 
               }) 

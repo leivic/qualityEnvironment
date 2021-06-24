@@ -97,13 +97,14 @@ export default {
                 yAxis: {
                     type: 'value',
                     axisLabel: {
-                        formatter: '{value}%',
+                        formatter: '{value}%',//参数类型的写法 
                     }
                 },
                 series: [{
                     data: ydata,
                     type: 'bar',
                     barCategoryGap: "1%",
+                    barWidth:20
                 }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
               })
               })

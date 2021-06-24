@@ -23,7 +23,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">工位覆盖率</a>
-                    <a class="dropdown-item" href="#">工位质量生态意识状态</a>
+                    <a class="dropdown-item" href="http://localhost:8080/#/gwzlstyszt">工位质量生态意识状态</a>
                     <a class="dropdown-item" href="#">变化点</a>
                 </div>
             </li>
