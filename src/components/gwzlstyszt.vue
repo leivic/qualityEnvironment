@@ -32,7 +32,9 @@ components: {
   },
 data(){
 	return {
-		month1:"2021-06"
+		month1:"2021-06",
+		zongfen:"80",
+		jigefen:"64"
 	}
 },
 mounted(){
@@ -47,9 +49,17 @@ mounted(){
               },
               }).then((res)=>{
 		  console.log(res.data)
-		  
-		  for(i=0;i<res.data.length;i++){
-
+		  let ydata=[]
+		  let dixiandata=[]
+		  let gaijindata=[]
+		  let zerendata=[]
+		  let zhurenwengdata=[]
+		  for(let i=0;i<res.data.length;i++){
+			  ydata.push(res.data[i].gongWeiHao)
+			  dixiandata.push(res.data[i].diXianYiShi)
+			  gaijindata.push(res.data[i].gaiJinYiShi)
+			  zerendata.push(res.data[i].zeRenYiShi)
+			  zhurenwengdata.push(res.data[i].zhuRenWengYiShi) 
 		  }
 		  Echart1.setOption({
 			tooltip: {
@@ -59,7 +69,7 @@ mounted(){
 				}
 			},
 			legend: {
-				data: ['直接访问', '邮件营销', '联盟广告', '视频广告']
+				data: ['底线意识', '改进意识', '责任意识', '主人翁意识']
 			},
 			grid: {
 				left: '3%',
@@ -70,7 +80,11 @@ mounted(){
 			xAxis: [
 				{
 				type: 'category',
-				data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				data: ydata,
+				axisLabel: {
+					interval:0,//横轴信息全部显示
+					rotate:-90,//-30度角倾斜显示  
+				} 
 				}
 			],
 			yAxis: [
@@ -80,40 +94,48 @@ mounted(){
 			],
 			series: [
 				{
-				name: '邮件营销',
+				name: '底线意识',
 				type: 'bar',
-				stack: '广告',
+				stack: '意识得分',
 				emphasis: {
 					focus: 'series'
 				},
-				data: [120, 132, 101, 134, 90, 230, 210]
+				data: dixiandata,
+				barCategoryGap: "1%",
+                    		barWidth:20
 				},
 				{
-				name: '联盟广告',
+				name: '改进意识',
 				type: 'bar',
-				stack: '广告',
+				stack: '意识得分',
 				emphasis: {
 					focus: 'series'
 				},
-				data: [220, 182, 191, 234, 290, 330, 310]
+				data: gaijindata,
+				barCategoryGap: "1%",
+                    		barWidth:20
 				},
 				{
-				name: '视频广告',
+				name: '责任意识',
 				type: 'bar',
-				stack: '广告',
+				stack: '意识得分',
 				emphasis: {
 					focus: 'series'
 				},
-				data: [150, 232, 201, 154, 190, 330, 410]
+				data: zerendata,
+				barCategoryGap: "1%",
+                    		barWidth:20
 				},
 				{
-				name: '直接访问',
+				name: '主人翁意识',
 				type: 'bar',
-				stack: '广告',
+				stack: '意识得分',
 				emphasis: {
 					focus: 'series'
 				},
-				data: [150, 232, 201, 154, 190, 330, 410]
+				data: zhurenwengdata,
+				barCategoryGap: "1%",
+                    		barWidth:20
 				},
 			]
 			});

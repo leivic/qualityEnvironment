@@ -160,13 +160,13 @@ export default {
 <style>
   #chartZpgc1{
     float: right;
-    width: 75%;
-    height: 500px;
+    width: 85%;
+    height: 600px;
     margin: 10px 10px 0px 20px;
   }
   #monthpickkerbox{
     position: absolute;
-    left: 25%;
+    left: 15%;
   }
   #monthpicker{
     border:none;
