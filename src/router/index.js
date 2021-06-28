@@ -19,6 +19,7 @@ import gwcc from '@/components/gwcc'
 import glygccc from '@/components/admin/glygccc'
 import pageHelper from '@/components/util/pageHelper'
 import gwzlstyszt from '@/components/gwzlstyszt'
+import glygwzlstys from '@/components/admin/glygwstys'
 Vue.use(Router)
 
 export default new Router({
@@ -117,6 +118,11 @@ export default new Router({
       path: '/gwzlstyszt',
       name: 'gwzlstyszt',
       component: gwzlstyszt
+    },
+    {
+      path: '/glygwzlstys',
+      name: 'glygwzlstys',
+      component: glygwzlstys
     },
   ]
 })

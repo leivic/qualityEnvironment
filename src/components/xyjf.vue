@@ -1,10 +1,10 @@
 <template>
     <div>
         <top></top>
-        <snav styxyjf="color:#696969">是不是因为啥都没有才不加载</snav>
-        <div></div>
+        <snav styxyjf="color:#696969"></snav>
+        <div id="chartXyjf1" style="{width: '75%', height: '400px'}"></div>
     </div>
-</template>
+</template> 
 <script>
 import snav from "./Nav"
 import top from "./TopCard"     
@@ -27,5 +27,11 @@ export default {
 }
 </script>
 <style>
-
+ #chartXyjf1{
+    float: right;
+    width: 85%;
+    height: 600px;
+    margin: 10px 10px 0px 20px;
+    border: 1px solid black;
+  }
 </style>

@@ -35,6 +35,7 @@ data(){
 		month1:"2021-06",
 		zongfen:"80",
 		jigefen:"64"
+		
 	}
 },
 mounted(){
@@ -54,14 +55,23 @@ mounted(){
 		  let gaijindata=[]
 		  let zerendata=[]
 		  let zhurenwengdata=[]
+		  let jigefendata=[]
 		  for(let i=0;i<res.data.length;i++){
 			  ydata.push(res.data[i].gongWeiHao)
 			  dixiandata.push(res.data[i].diXianYiShi)
 			  gaijindata.push(res.data[i].gaiJinYiShi)
 			  zerendata.push(res.data[i].zeRenYiShi)
-			  zhurenwengdata.push(res.data[i].zhuRenWengYiShi) 
+			  zhurenwengdata.push(res.data[i].zhuRenWengYiShi)
+			  jigefendata.push(this.jigefen) 
 		  }
 		  Echart1.setOption({
+			title: {
+				text:that.month1+"工位质量生态意识状态",
+				textStyle:{
+				fontSize:22
+				},
+				left: "20%",
+			},  
 			tooltip: {
 				trigger: 'axis',
 				axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -69,7 +79,8 @@ mounted(){
 				}
 			},
 			legend: {
-				data: ['底线意识', '改进意识', '责任意识', '主人翁意识']
+				data: ['底线意识', '改进意识', '责任意识', '主人翁意识'],
+				right: "5%"
 			},
 			grid: {
 				left: '3%',
@@ -137,10 +148,74 @@ mounted(){
 				barCategoryGap: "1%",
                     		barWidth:20
 				},
+				{
+					data: jigefendata,
+					type: 'line'
+				}
 			]
 			});
 
 	      })
+},
+watch:{
+	month1(newVal,oldVal){
+		console.log(newVal+","+oldVal)
+		var that=this
+		this.$axios({
+		method:"post",
+		url:'http://localhost:8090/selectShengTaiYiShiDataByDate',
+		params:{
+			date:this.month1
+		},
+		}).then((res)=>{
+			console.log(res.data)
+			let ydata=[]
+			let dixiandata=[]
+			let gaijindata=[]
+			let zerendata=[]
+			let zhurenwengdata=[]
+			let jigefendata=[]
+			for(let i=0;i<res.data.length;i++){
+				ydata.push(res.data[i].gongWeiHao)
+				dixiandata.push(res.data[i].diXianYiShi)
+				gaijindata.push(res.data[i].gaiJinYiShi)
+				zerendata.push(res.data[i].zeRenYiShi)
+				zhurenwengdata.push(res.data[i].zhuRenWengYiShi)
+				jigefendata.push(this.jigefen) 
+			}
+			Echart1.setOption({
+				title: {
+				text:that.month1+"工位质量生态意识状态",//更新标题里面的日期 
+				},
+				xAxis: [
+				{
+				type: 'category',
+				data: ydata,
+				}
+				],  
+				series: [
+				{
+				data: dixiandata,
+				},
+				{
+				data: gaijindata,
+				},
+				{
+				data: zerendata,
+				},
+				{
+				data: zhurenwengdata,
+				},
+				{
+					data: jigefendata,
+					type: 'line'
+				}
+			]
+			})	
+
+		})
+		
+	}
 }
 }
 </script>

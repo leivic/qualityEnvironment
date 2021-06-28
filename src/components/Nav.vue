@@ -35,6 +35,7 @@
                     <a class="dropdown-item" href="http://localhost:8080/#/adminyhxx">用户信息管理</a>
                     <a class="dropdown-item" href="http://localhost:8080/#/glyzpgw">工位信息管理</a>
                      <a class="dropdown-item" href="http://localhost:8080/#/glygccc">过程信息管理</a>
+                     <a class="dropdown-item" href="http://localhost:8080/#/glygwzlstys">工位质量生态意识信息管理</a>
                 </div>
             </li>
         </ul>
@@ -51,5 +52,6 @@ props:["styxyjf","stysthj","stystys","styadmin"]//vue中 html标签的属性都�
        position: fixed;
        left: 0px;
        top: 100px;
+       z-index: 100;
    } 
 </style>

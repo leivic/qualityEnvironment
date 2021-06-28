@@ -3,7 +3,7 @@
             <top></top>
             <snav styadmin="color:#696969"></snav>
             <adduser id="adduser"></adduser>
-            <div id="gly1" style="{width: '75%', height: '400px'}">
+            <div id="gly1" style="{width: '85%', height: '550px'}">
                 <div id="gly1top">
                     <div id="gly1topleft">
                         <h3>用户信息管理</h3>
@@ -128,10 +128,11 @@ export default {
 <style>
     #gly1{
     float: right;
-    width: 75%;
-    height: 500px;
+    width: 85%;
+    height: 550px;
     margin: 10px 10px 0px 20px;
     position: relative;
+   
   }
   #gly1top{
       height: 10%;

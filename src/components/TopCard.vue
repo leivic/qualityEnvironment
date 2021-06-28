@@ -5,8 +5,7 @@
                 <div id="card">
                     <h1 class="card-title">SGMW质量生态文明数字化平台</h1>
                 </div>
-                <div id="imgwulin">
-
+               <div id="imgwulin">
                 </div>
                 <div id="userinfo">
                     <div class="userinfobox">当前用户:{{user}}</div>
@@ -33,6 +32,7 @@ export default {
  #card{
      float: left;
      width: 70%;
+     
  }
  #imgwulin{
      position: absolute;
@@ -50,6 +50,7 @@ export default {
      line-height: 100%;
      margin-top: 10px;
      color: dodgerblue;
+     
  }
  .userinfobox{
      display: inline-block;
