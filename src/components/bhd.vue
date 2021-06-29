@@ -41,20 +41,17 @@ mounted(){
 	let myChart = echarts.init(document.getElementById('chartGwzlstyszt')) //获得一个dom元素 传入echarts对象的init方法 这是个静态方法 不出意外是写在原型上的 
 	Echart1 = myChart
 	var that=this
-	/*
-	
-	获取当前月份 使用全局变量里面的 thedate对象 
 	
 	
-	*/
-	let month2
+	
+	let month2 //获取当前月份 使用全局变量里面的 thedate对象 
 	if (this.display.theDate.getMonth()<9) {
 		month2=this.display.theDate.getFullYear()+"-"+"0"+(this.display.theDate.getMonth()+1)	
 	}
 	else{
 		month2=this.display.theDate.getFullYear()+"-"+(this.display.theDate.getMonth()+1)
 	}
-	console.log(month2)
+	console.log(month2)//获取当前月份 
 
 
 	this.$axios({
@@ -65,7 +62,25 @@ mounted(){
               },
               }).then((res)=>{
 		  console.log(res.data)
+
+		  let arryCheJian=[]//数组去重  循环res.data对象数组的每一项 并将每一项作为参数传入箭头函数 .foreach方法本就要传参
+		  res.data.forEach(element => {
+			  return arryCheJian.includes(element.shenHeQuYu) ? '' : arryCheJian.push(element.shenHeQuYu)
+		  });
+		  console.log(arryCheJian)//数组去重
 		  
+		  
+		  for (var i of res.data) { //双重循环 当去重后的车间数组 和 未去重前的所有车间相等时
+			  for (let a in arryCheJian) {
+				  if (i.shenHeQuYu == arryCheJian[a]) {
+					 console.log(i.shenHeQuYu+arryCheJian[a])
+					 arryCheJian[a]=new Array()
+					 arryCheJian[a].push(i.okOrNoOk)//得到一个二维数组  
+				  }
+			  }
+		  }//双重循环 
+
+
 
 		  Echart1.setOption({
 			
