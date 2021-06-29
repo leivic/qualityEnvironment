@@ -20,6 +20,8 @@ import glygccc from '@/components/admin/glygccc'
 import pageHelper from '@/components/util/pageHelper'
 import gwzlstyszt from '@/components/gwzlstyszt'
 import glygwzlstys from '@/components/admin/glygwstys'
+import glybhd from '@/components/admin/glybhd'
+import bhd from '@/components/bhd'
 Vue.use(Router)
 
 export default new Router({
@@ -123,6 +125,16 @@ export default new Router({
       path: '/glygwzlstys',
       name: 'glygwzlstys',
       component: glygwzlstys
+    },
+    {
+      path: '/glybhd',
+      name: 'glybhd',
+      component: glybhd
+    },
+    {
+      path: '/bhd',
+      name: 'bhd',
+      component: bhd
     },
   ]
 })

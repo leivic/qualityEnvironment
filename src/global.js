@@ -14,6 +14,7 @@ let display13=false;
 let display14=false;
 let username="未登录";
 let role="未登录 ";
+var theDate = new Date();
 export default{
     display1,
     display2,
@@ -30,5 +31,6 @@ export default{
     display13,
     username,
     role,
-    display14
+    display14,
+    theDate 
 }

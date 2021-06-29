@@ -129,8 +129,7 @@ export default {
     #gly1{
     float: right;
     width: 85%;
-    height: 550px;
-    margin: 10px 10px 0px 20px;
+    height: 600px;
     position: relative;
    
   }

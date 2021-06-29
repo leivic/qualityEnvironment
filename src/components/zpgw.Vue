@@ -39,9 +39,9 @@ export default {
     top,
   },
   mounted(){
-     let myChart = echarts.init(document.getElementById('chartZpgw1'))
-    Echart1 = myChart
-    var that=this
+      let myChart = echarts.init(document.getElementById('chartZpgw1'))
+      Echart1 = myChart
+      var that=this
       this.$axios({
               method:"post",
               url:'http://localhost:8090/getLastGongWeiData',
@@ -64,7 +64,9 @@ export default {
                   console.log(ydata)//获得echarts中x轴和y轴的data数据
                   
                   Echart1.setOption({
+                    
                 title: {
+                  
                   text:"质量生态环境"+that.month1+"月自评工位符合率",
                   textStyle:{
                     fontSize:22
@@ -158,11 +160,11 @@ export default {
     float: right;
     width: 85%;
     height: 600px;
-    margin: 10px 10px 0px 20px;
   }
   #monthpickkerbox{
     position: absolute;
     left: 15%;
+    color: rgb(233, 239, 247);
   }
   #monthpicker{
     border:none;

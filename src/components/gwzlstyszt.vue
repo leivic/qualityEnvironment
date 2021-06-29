@@ -216,7 +216,10 @@ watch:{
 		})
 		
 	}
-}
+},
+beforeDestroy(){
+          let Echart1 =null
+        }
 }
 </script>
 <style>
@@ -224,8 +227,6 @@ watch:{
     float: right;
     width: 85%;
     height: 600px;
-    margin: 10px 10px 0px 20px;
-    
   }
   #monthpickkerbox{
     position: absolute;

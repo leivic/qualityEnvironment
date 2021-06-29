@@ -19,17 +19,17 @@
                     <table class="table">
                 <thead class="thead-light">
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">工位号</th>
-                    <th scope="col">审核区域</th>
-                    <th scope="col">评价日期</th>
-                    <th scope="col">底线意识</th>
-		            <th scope="col">责任意识</th>
-                    <th scope="col">主人翁意识</th>
-                    <th scope="col">改进意识</th>
-		            <th scope="col">总分</th>
-                    <th scope="col">及格分</th>
-		            <th scope="col">#</th> 
+                    <th scope="col" width="4%">#</th>
+                    <th scope="col" width="15%">工位号</th>
+                    <th scope="col" width="10%">审核区域</th>
+                    <th scope="col" width="10%">评价日期</th>
+                    <th scope="col" width="10%">底线意识</th>
+		            <th scope="col" width="10%">责任意识</th>
+                    <th scope="col" width="10%">主人翁意识</th>
+                    <th scope="col" width="10%">改进意识</th>
+		            <th scope="col" width="7%">总分</th>
+                    <th scope="col" width="7%">及格分</th>
+		            <th scope="col" width="7%">#</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -169,9 +169,9 @@ components: {
  #gly1{
     float: right;
     width: 85%;
-    height: 550px;
-    margin: 10px 10px 0px 20px;
+    height: 600px;
     position: relative;
+    
   }
   #gly1top{
       height: 10%;

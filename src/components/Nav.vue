@@ -24,7 +24,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">工位覆盖率</a>
                     <a class="dropdown-item" href="http://localhost:8080/#/gwzlstyszt">工位质量生态意识状态</a>
-                    <a class="dropdown-item" href="#">变化点</a>
+                    <a class="dropdown-item" href="http://localhost:8080/#/bhd">变化点</a>
                 </div>
             </li>
             <li class="nav-item dropright">
@@ -36,6 +36,7 @@
                     <a class="dropdown-item" href="http://localhost:8080/#/glyzpgw">工位信息管理</a>
                      <a class="dropdown-item" href="http://localhost:8080/#/glygccc">过程信息管理</a>
                      <a class="dropdown-item" href="http://localhost:8080/#/glygwzlstys">工位质量生态意识信息管理</a>
+                     <a class="dropdown-item" href="http://localhost:8080/#/glybhd">变化点信息管理</a>
                 </div>
             </li>
         </ul>

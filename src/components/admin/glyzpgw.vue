@@ -19,17 +19,17 @@
                     <table class="table">
                 <thead class="thead-light">
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">工作模块</th>
-                    <th scope="col">自评/抽查</th>
-                    <th scope="col">评审内容</th>
-                    <th scope="col">工位名称</th>
-		            <th scope="col">适用条款</th>
-                    <th scope="col">符合条款</th>
-                    <th scope="col">符合率</th>
-		            <th scope="col">评审区域</th>
-                    <th scope="col">评审时间</th>
-		            <th scope="col">#</th> 
+                    <th scope="col" width="4%">#</th>
+                    <th scope="col" width="12%">工作模块</th>
+                    <th scope="col" width="9%">自评/抽查</th>
+                    <th scope="col" width="10%">评审内容</th>
+                    <th scope="col" width="12%">工位名称</th>
+		            <th scope="col" width="9%">适用条款</th>
+                    <th scope="col" width="9%">符合条款</th>
+                    <th scope="col" width="7%">符合率</th>
+		            <th scope="col" width="12%">评审区域</th>
+                    <th scope="col" width="9%">评审时间</th>
+		            <th scope="col" width="7%">#</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -168,8 +168,7 @@ components: {
  #gly1{
     float: right;
     width: 85%;
-    height: 550px;
-    margin: 10px 10px 0px 20px;
+    height: 600px;
     position: relative;
   }
   #gly1top{

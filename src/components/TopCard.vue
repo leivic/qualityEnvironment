@@ -50,12 +50,13 @@ export default {
      line-height: 100%;
      margin-top: 10px;
      color: dodgerblue;
-     
+    
  }
  .userinfobox{
-     display: inline-block;
-     width: 45%;
+     float: right;
+     width: 35%;
      height: 100%;
      line-height: 100%;
+    
  }
 </style>

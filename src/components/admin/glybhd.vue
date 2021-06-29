@@ -5,7 +5,7 @@
 		<div id="gly1" style="{width: '85%', height: '550px'}">
                 <div id="gly1top">
                     <div id="gly1topleft3">
-                        <h3>工位质量生态意识信息管理</h3>
+                        <h3>变化点信息管理</h3>
                     </div>
                     <div id="gly1topright ">
                         <form>
@@ -19,17 +19,14 @@
                     <table class="table">
                 <thead class="thead-light">
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">工位号</th>
-                    <th scope="col">审核区域</th>
-                    <th scope="col">评价日期</th>
-                    <th scope="col">底线意识</th>
-		            <th scope="col">责任意识</th>
-                    <th scope="col">主人翁意识</th>
-                    <th scope="col">改进意识</th>
-		            <th scope="col">总分</th>
-                    <th scope="col">及格分</th>
-		            <th scope="col">#</th> 
+                    <th scope="col" width="4%">#</th>
+                    <th scope="col" width="15%">工位名称</th>
+                    <th scope="col" width="10%">审核日期</th>
+                    <th scope="col" width="15%">审核区域</th>
+                    <th scope="col" width="7%">类型</th>
+		            <th scope="col" width="32%">变化点内容</th>
+                    <th scope="col" width="10%">是否ok</th>
+		            <th scope="col" width="7%">#</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -38,15 +35,12 @@
                     下面data里面的数组数据 item就代表每一项 应用场景：1.动态获取相同格式数据时 2.接收后端列表，循环取出每一条时
                     item.id 直接和对象数组的用法一样的 item就是每个对象 可以使用.语法 取属性 -->
                     <th scope="row" >{{item.id}}</th><!--注意标签里属性绑定的值 会直接绑定该值到vue model层里面的data-->
-                    <th scope="col">{{item.gongWeiHao}}</th>
+                    <th scope="col">{{item.gongWeiMinChen}}</th>
+                    <th scope="col">{{item.shenHeRiQi}}</th>
                     <th scope="col">{{item.shenHeQuYu}}</th>
-                    <th scope="col">{{item.pinJiaRiQi}}</th>
-                    <th scope="col">{{item.diXianYiShi}}</th>
-		            <th scope="col">{{item.zeRenYiShi}}</th>
-                    <th scope="col">{{item.zhuRenWengYiShi}}</th>
-                    <th scope="col">{{item.gaiJinYiShi}}</th>
-		            <th scope="col">{{item.zongFen}}</th>
-		            <th scope="col">{{item.jiGeFen}}</th>
+                    <th scope="col">{{item.leiXin}}</th>
+		            <th scope="col">{{item.bianHuaDianLeiRong}}</th>
+                    <th scope="col">{{item.okOrNoOk}}</th>
                     <td>
                         <a href="#" @click="delet(item.id)">
                             删除
@@ -92,7 +86,7 @@ components: {
 	      params:{
                   pageNum:"1"//params data是前后端交互 不同的数据格式 
               },
-              url:'http://localhost:8090/selectALLShengTaiYiShiData',
+              url:'http://localhost:8090/selectALLBianHuaDian',
               }).then((res)=>{
                   console.log(res.data)
                   this.tabledata=res.data //生命周期里面的ajax里面的this仍然指向 当前组件vue实例
@@ -108,7 +102,7 @@ components: {
          this.$axios({
 	      method:"post",
 	      data:formdata,
-              url:'http://localhost:8090/exportGongWeiZhiLiangShengTaiYiShi',
+              url:'http://localhost:8090/exportBianHuaDian',
               }).then((res)=>{
                   console.log(res.data)
               })
@@ -122,7 +116,7 @@ components: {
           params:{ 
             id:id
           },
-              url:'http://localhost:8090/deleteGongWeiZhiLiangShengTaiYiShiById',
+              url:'http://localhost:8090/deleteBianHuaDianById',
               }).then((res)=>{
                   console.log(res.data)
               }),
@@ -135,7 +129,7 @@ components: {
 	      params:{
                   pageNum:"1"
               },
-              url:'http://localhost:8090/selectALLShengTaiYiShiData',
+              url:'http://localhost:8090/selectALLBianHuaDian',
               }).then((res)=>{
                   console.log(res.data)
                   this.tabledata=res.data 
@@ -156,7 +150,7 @@ components: {
 	      params:{
                   pageNum:this.pageNum
               },
-              url:'http://localhost:8090/selectALLShengTaiYiShiData',
+              url:'http://localhost:8090/selectALLBianHuaDian',
               }).then((res)=>{
                   console.log(res.data)
                   this.tabledata=res.data 
@@ -169,9 +163,9 @@ components: {
  #gly1{
     float: right;
     width: 85%;
-    height: 550px;
-    margin: 10px 10px 0px 20px;
+    height: 600px;
     position: relative;
+    
   }
   #gly1top{
       height: 10%;
