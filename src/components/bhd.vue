@@ -70,6 +70,8 @@ mounted(){
 		  }
 		  console.log(xdata)
 		  console.log(ydata)
+
+
 		  /*
 		  let arryCheJian=[]//数组去重  循环res.data对象数组的每一项 并将每一项作为参数传入箭头函数 .foreach方法本就要传参
 		  res.data.forEach(element => {
@@ -84,7 +86,7 @@ mounted(){
 					 console.log(i.shenHeQuYu+arryCheJian[a])
 					 console.log(arryCheJian[a])
 					 arryCheJian[a]=new Array()
-					 arryCheJian[a].push(i.okOrNoOk)//得到一个二维数组  
+					 arryCheJian[a].push(i.okOrNoOk)//得到一个二维数组 
 				  }
 			  }
 		  }//双重循环  
@@ -143,7 +145,7 @@ mounted(){
 },
 watch:{
 	month1(newVal,oldVal){
-		console.log(newVal+","+oldVal)
+		console.log(newVal+","+oldVal) //监控data里面的数据 
 		var that=this
 		this.$axios({
 		method:"post",
