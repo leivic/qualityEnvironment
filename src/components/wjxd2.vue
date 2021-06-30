@@ -2,7 +2,7 @@
     <div>
         <top></top>
             <snav stysthj="color:#696969"></snav>
-            <div id="chartWjxd2" style="{width: '75%', height: '400px'}"></div>
+            <div id="chartWjxd2" style="{width: '85%', height: '600px'}"></div>
            <pagenav href1="#/wjxd1" href2="#/wjxd2"></pagenav>
     </div>
 </template>
@@ -30,5 +30,9 @@ export default {
 }
 </script>
 <style>
-
+#chartWjxd2{
+    float: right;
+    width: 85%;
+    height: 600px;
+  }
 </style>

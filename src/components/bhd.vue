@@ -56,13 +56,21 @@ mounted(){
 
 	this.$axios({
               method:"post",
-              url:'http://localhost:8090/selectBianHuaDianByDate',
+              url:'http://localhost:8090/getBianHuaDianSecondData',
               params:{
                   date:month2
               },
               }).then((res)=>{
 		  console.log(res.data)
-
+		  let xdata=[];
+		  let ydata=[];
+		  for (const r of res.data) {
+			  xdata.push(r.fenLeiYiJu)
+			  ydata.push(r.percentage*100)
+		  }
+		  console.log(xdata)
+		  console.log(ydata)
+		  /*
 		  let arryCheJian=[]//数组去重  循环res.data对象数组的每一项 并将每一项作为参数传入箭头函数 .foreach方法本就要传参
 		  res.data.forEach(element => {
 			  return arryCheJian.includes(element.shenHeQuYu) ? '' : arryCheJian.push(element.shenHeQuYu)
@@ -74,16 +82,61 @@ mounted(){
 			  for (let a in arryCheJian) {
 				  if (i.shenHeQuYu == arryCheJian[a]) {
 					 console.log(i.shenHeQuYu+arryCheJian[a])
+					 console.log(arryCheJian[a])
 					 arryCheJian[a]=new Array()
 					 arryCheJian[a].push(i.okOrNoOk)//得到一个二维数组  
 				  }
 			  }
-		  }//双重循环 
+		  }//双重循环  
 
+		  for (const x of arryCheJian) {//双重循环 输出二维数组每一项
+		  	  console.log(x)
+		  }//双重循环 
+		  */
 
 
 		  Echart1.setOption({
-			
+				title: {
+				text:"质量生态意识"+that.month1+"变化点措施落实率",
+				textStyle:{
+				fontSize:22
+				},
+				left: "center",
+				},
+				tooltip: {
+				trigger: "axis",
+				axisPointer: {
+				type: "shadow",
+				},
+				},//鼠标悬浮的提示框组件 
+				toolbox: {
+				feature: {
+					dataView: {show: true, readOnly: false},
+					magicType: {show: true, type: ['line', 'bar']},
+					restore: {show: true},
+					saveAsImage: {show: true}
+				},
+				right: "10%"
+				},
+				xAxis: {
+				type: 'category',
+				data: xdata,
+				axisLabel: {
+					interval:0,//横轴信息全部显示
+				}
+				},
+				yAxis: {
+				type: 'value',
+				axisLabel: {
+					formatter: '{value}%',
+				}
+				},
+				series: [{
+				data: ydata,
+				type: 'bar',
+				barCategoryGap: "1%",
+				barWidth:20
+				}]
 			});
 
 	      })
@@ -94,17 +147,31 @@ watch:{
 		var that=this
 		this.$axios({
 		method:"post",
-		url:'http://localhost:8090/selectBianHuaDianByDate',
+		url:'http://localhost:8090/getBianHuaDianSecondData',
 		params:{
 			date:this.month1
 		},
 		}).then((res)=>{
 			console.log(res.data)
-			
+			let xdata=[];
+			let ydata=[];
+			for (const r of res.data) {
+				xdata.push(r.fenLeiYiJu)
+				ydata.push(r.percentage*100)
+			}
+			console.log(xdata)
+			console.log(ydata)
 			Echart1.setOption({
-				
+				title: {
+				text:"质量生态意识"+that.month1+"变化点措施落实率",
+				},
+				xAxis: {
+				data: xdata,
+				},
+				series: [{
+				data: ydata,
+				}]	
 			})	
-
 		})
 		
 	}
