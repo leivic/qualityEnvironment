@@ -1,7 +1,7 @@
 <template>
     <div> 
             <top></top>
-            <snav styadmin="color:#696969"></snav>
+            <snav styadmin="color:#99FFFF"></snav>
             <adduser id="adduser"></adduser>
             <div id="gly1" style="{width: '85%', height: '550px'}">
                 <div id="gly1top">

@@ -28,6 +28,9 @@ export default {
 <style scoped>
  .ca {
      height: 100px;
+     background-image: linear-gradient(#243949,#517fa4);
+     color:white
+
  }
  #card{
      float: left;
@@ -49,8 +52,8 @@ export default {
      width: 30%;
      line-height: 100%;
      margin-top: 10px;
-     color: dodgerblue;
-    
+     color: white;
+     
  }
  .userinfobox{
      float: right;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <top></top>
-            <snav stysthj="color:#696969"></snav>
+            <snav stysthj="color:#99FFFF"></snav>
             <div id="chartWjxd1" style="{width: '75%', height: '400px'}"></div>
            <pagenav href1="#/wjxd1" href2="#/wjxd2"></pagenav><!--组件传过来的属性值 -->
     </div>

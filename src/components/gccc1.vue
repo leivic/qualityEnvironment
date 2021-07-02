@@ -1,7 +1,7 @@
 <template>
     <div> 
             <top></top>
-            <snav stysthj="color:#696969"></snav>
+            <snav stysthj="color:#99FFFF"></snav>
             <div id="chartGccc1" style="{width: '75%', height: '400px'}"></div>
             <div id="monthpickkerbox">
               <el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>

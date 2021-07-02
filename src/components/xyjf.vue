@@ -1,7 +1,7 @@
 <template>
     <div>
         <top></top>
-        <snav styxyjf="color:#696969"></snav>
+        <snav styxyjf="color:#99FFFF"></snav>
         <div id="chartXyjf1" style="{width: '75%', height: '400px'}"></div>
     </div>
 </template> 

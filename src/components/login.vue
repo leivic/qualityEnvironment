@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="back">
-        <h1 class="animate__animated animate__backInDown title">质量生态文明数字化平台</h1>
+        <h1 class="animate__animated animate__backInDown title" style="color:#FFFFFF">质量生态文明数字化平台</h1>
         <div id="loginmain">
             <form >
             <div class="form-group">
@@ -109,7 +109,7 @@ export default {
     
 }
 </script>
-<style >
+<style scoped>
 #back{
     position: fixed;
     left: 0px;
@@ -145,7 +145,8 @@ export default {
             width: 100%;
             height: 100%;
             z-index: -10;
-            background-image: linear-gradient(180deg,rgb(107, 183, 245),rgb(74, 115, 226));
+            background-image: linear-gradient(-90deg, #29bdd9 0%, #276ace 100%);
+
         }
 
         .bubble{

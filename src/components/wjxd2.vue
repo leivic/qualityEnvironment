@@ -1,7 +1,7 @@
 <template>
     <div>
         <top></top>
-            <snav stysthj="color:#696969"></snav>
+            <snav stysthj="color:#99FFFF"></snav>
             <div id="chartWjxd2" style="{width: '85%', height: '600px'}"></div>
            <pagenav href1="#/wjxd1" href2="#/wjxd2"></pagenav>
     </div>

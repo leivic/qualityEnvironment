@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<top></top>
-		<snav styadmin="color:#696969"></snav><!--子组件绑定值在props里面 传到父组件参数成了标签的属性-->
+		<snav styadmin="color:#99FFFF"></snav><!--子组件绑定值在props里面 传到父组件参数成了标签的属性-->
 		<div id="gly1" style="{width: '85%', height: '550px'}">
                 <div id="gly1top">
                     <div id="gly1topleft">
