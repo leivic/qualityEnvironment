@@ -12,25 +12,14 @@
 <script>
 import snav from "./Nav"
 import top from "./TopCard" 
-let echarts = require('echarts/lib/echarts')
-import { GridComponent } from 'echarts/components';
-echarts.use([GridComponent]);
-// 引入柱状图组件 我是使用npm install echarts 安装最新版的echarts 版本不一样
-//引入可能也会有一些差别 
-require('echarts/lib/chart/bar')
-// 引入提示框和title组件
-require('echarts/lib/component/tooltip')
-require('echarts/lib/component/title')
-require('echarts/lib/component/legend')
-import { ToolboxComponent } from 'echarts/components';
-echarts.use([ToolboxComponent]);
+import getChart from '@/util'
 
 let Echart1
 export default {
 
   data(){
     return {
-      month1:"2021-06"
+      month1:""
     }
     
   },
@@ -39,78 +28,12 @@ export default {
     top,
   },
   mounted(){
-      let myChart = echarts.init(document.getElementById('chartZpgw1'))
-      Echart1 = myChart
-      var that=this
-      this.$axios({
-              method:"post",
-              url:'http://localhost:8090/getLastGongWeiData',
-              params:{
-                  date:this.month1,
-                  pingShengXingZhi:"自查" //
-              }
-              }).then((res)=>{
-                  console.log(res.data)
-                  var xdata=[]
-                  var ydata=[]
-                  for(let i=0;i<res.data.length;i++){
-                    
-                      xdata.push(res.data[i].stationName)
-                      ydata.push(res.data[i].stationPercentage*100)
-                    
+    let myChart = getChart.echarts.init(document.getElementById('chartZpgw1'))
+    Echart1 = myChart
+    getChart.getChart2(Echart1) //echarts配置除了数据之外的东西 
 
-                  }
-                  console.log(xdata)
-                  console.log(ydata)//获得echarts中x轴和y轴的data数据
-                  
-                  Echart1.setOption({
-                    
-                title: {
-                  
-                  text:"质量生态环境"+that.month1+"月自评工位符合率",
-                  textStyle:{
-                    fontSize:22
-                  },
-                  left: "center",
-                },
-                tooltip: {
-                  trigger: "axis",
-                  axisPointer: {
-                    type: "shadow",
-                  },
-                },//鼠标悬浮的提示框组件 
-                toolbox: {
-                    feature: {
-                        dataView: {show: true, readOnly: false},
-                        magicType: {show: true, type: ['line', 'bar']},
-                        restore: {show: true},
-                        saveAsImage: {show: true}
-                    },
-                    right: "10%"
-                },
-                xAxis: {
-                    type: 'category',
-                    data: xdata,
-                    axisLabel: {
-                        interval:0,//横轴信息全部显示
-                        rotate:-60,//-30度角倾斜显示  
-                    }
-                },
-                yAxis: {
-                    type: 'value',
-                    axisLabel: {
-                        formatter: '{value}%',
-                    }
-                },
-                series: [{
-                    data: ydata,
-                    type: 'bar',
-                    barCategoryGap: "1%",
-                    barWidth:20
-                }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
-              })
-              })
-
+    this.month1=getChart.getmon()
+    console.log(this.month1)
               
   },
   watch:{
@@ -135,17 +58,7 @@ export default {
                   }
                   console.log(xdata)
                   console.log(ydata)//获得echarts中x轴和y轴的data数据
-                  Echart1.setOption({
-                    title: {
-                      text:"质量生态环境"+that.month1+"月自评工位符合率",
-                    },
-                    xAxis: {
-                    data: xdata,
-                },
-                   series: [{
-                    data: ydata,
-                }]
-                  }) 
+                  getChart.getChart2Data(Echart1,"质量生态环境"+this.month1+"自评工位符合率",xdata,ydata)//因为getChart是对象 所以使用.语法  当前文件自然只能使用当前文件出现的变量 
               }) 
       }
   },

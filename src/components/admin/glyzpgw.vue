@@ -110,8 +110,10 @@ components: {
 	      data:formdata,
               url:'http://localhost:8090/exportGongWeiFuHe',
               }).then((res)=>{
-                  console.log(res.data)
+                 
               })
+         e.value="" //清空e.value
+         window.alert("导入成功")
          this.reloaddata()
          this.reload()
       },

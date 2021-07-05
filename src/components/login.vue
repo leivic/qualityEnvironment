@@ -72,6 +72,8 @@ export default {
               url:'http://localhost:8090/a1',
               }).then((res)=>{
                   console.log(res.data);
+                  sessionStorage.setItem("username",res.data.username)
+                  //像下面直接this.display全局变量存储数据 一个刷新就会数据丢失 全局变量一般都用const  这里是sessionStorage存储数据 web中一种比cookie更好的数据存储方式
                   this.display.username=res.data.username
                   switch (res.data.authorities[0].authority){
                       case "ROLE_admin":
@@ -81,7 +83,8 @@ export default {
                           that.display.display4=true,
                           that.display.display6=true,
                           that.display.display14=true,
-                          that.display.role="管理员"
+                          sessionStorage.setItem("authority","管理员")
+                          //这个that.display是旧的写法 这样的全局变量会造成变量丢失问题 that.display.role="管理员"
                           console.log(this.display.display1),
                           console.log(this.display.display2),
                           console.log(this.display.display3),
@@ -94,6 +97,7 @@ export default {
                           that.display.display1=true,
                           that.display.display4=true,
                           that.display.role="普通用户"
+                          sessionStorage.setItem("authority","普通用户")
                           console.log(this.display.display1),
                           console.log(this.display.display2),
                           console.log(this.display.display3),

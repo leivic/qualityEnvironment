@@ -32,7 +32,7 @@ components: {
   },
 data(){
 	return {
-		month1:"2021-06",
+		month1:"",
 		
 		
 	}
@@ -99,7 +99,7 @@ mounted(){
 
 		  Echart1.setOption({
 				title: {
-				text:"质量生态意识"+that.month1+"变化点措施落实率",
+				text:"质量生态意识"+month2+"变化点措施落实率",
 				textStyle:{
 				fontSize:22
 				},

@@ -38,6 +38,8 @@ export default {
     console.log(getChart)
     console.log(this.display)
     console.log(getChart.getmon())
+
+    getChart.getChart2(Echart1)
     this.month1=getChart.getmon()
     //this.getmon()  //mount里面不再加载echrts 因为month1=“” 所以this.getmon（）改变month1时 会直接触发watch 所以在watch里面加载echarts就行了
   },
@@ -63,7 +65,7 @@ export default {
                   console.log(xdata)
                   console.log(ydata)//获得echarts中x轴和y轴的data数据
 
-                  getChart.getChart1(Echart1,"质量生态环境"+this.month1+"区域过程符合率",xdata,ydata)//因为getChart是对象 所以使用.语法  当前文件自然只能使用当前文件出现的变量 
+                  getChart.getChart2Data(Echart1,"质量生态环境"+this.month1+"自评区域过程符合率",xdata,ydata)//因为getChart是对象 所以使用.语法  当前文件自然只能使用当前文件出现的变量 
 
               }) 
       }

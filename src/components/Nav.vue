@@ -60,7 +60,7 @@ props:["styxyjf","stysthj","stystys","styadmin"]//vue中 html标签的属性都�
    #navback{
        float: left;
        width: 15%;
-       height: 600px;
+       height: 750px;
        background:linear-gradient(#243949,#517fa4);
 
    }

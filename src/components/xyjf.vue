@@ -31,6 +31,5 @@ export default {
     float: right;
     width: 85%;
     height: 600px;
-    border: 1px solid black;
   }
 </style>
