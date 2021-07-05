@@ -12,27 +12,17 @@
 
 <script>
 import snav from "./Nav"
-import top from "./TopCard" 
+import top from "./TopCard"
+import getChart from '@/util'//简单的模块化和函数封装 那边export{getChart1.echarts} 而这里引入名称是getChart 所以getChart是一个对象 有两个属性分别是getChart 和 echarts
 import pagenav from"./PageNav.vue"
-let echarts = require('echarts/lib/echarts')
-import { GridComponent } from 'echarts/components';
-echarts.use([GridComponent]);
-// 引入柱状图组件 我是使用npm install echarts 安装最新版的echarts 版本不一样
-//引入可能也会有一些差别 
-require('echarts/lib/chart/bar')
-// 引入提示框和title组件
-require('echarts/lib/component/tooltip')
-require('echarts/lib/component/title')
-require('echarts/lib/component/legend')
-import { ToolboxComponent } from 'echarts/components';
-echarts.use([ToolboxComponent]);
+
 
 let Echart1
 export default {
 
   data(){
     return {
-      month1:"2021-06"
+      month1:""
     }
     
   },
@@ -42,77 +32,14 @@ export default {
     pagenav
   },
   mounted(){
-     let myChart = echarts.init(document.getElementById('chartZpgc1'))
+    let myChart = getChart.echarts.init(document.getElementById('chartZpgc1'))
     Echart1 = myChart
-    var that=this
-      this.$axios({
-              method:"post",
-              url:'http://localhost:8090/GetSecondGuoChenDataByQuYu',
-              params:{
-                  date:this.month1,
-                  pingShengXingZhi:"自查" //
-              }
-              }).then((res)=>{
-                  console.log(res.data)
-                  var xdata=[]
-                  var ydata=[]
-                  for(let i=0;i<res.data.length;i++){
-                    
-                      xdata.push(res.data[i].fenLeiYiJu)
-                      ydata.push(res.data[i].guoChenpercentage*100)
-                    
-
-                  }
-                  console.log(xdata)
-                  console.log(ydata)//获得echarts中x轴和y轴的data数据
-                  
-                  Echart1.setOption({
-                title: {
-                  text:"质量生态环境"+that.month1+"月自评区域过程符合率",
-                  textStyle:{
-                    fontSize:22
-                  },
-                  left: "center",
-                },
-                tooltip: {
-                  trigger: "axis",
-                  axisPointer: {
-                    type: "shadow",
-                  },
-                },//鼠标悬浮的提示框组件 
-                toolbox: {
-                    feature: {
-                        dataView: {show: true, readOnly: false},
-                        magicType: {show: true, type: ['line', 'bar']},
-                        restore: {show: true},
-                        saveAsImage: {show: true}
-                    },
-                    right: "10%"
-                },
-                xAxis: {
-                    type: 'category',
-                    data: xdata,
-                    axisLabel: {
-                        interval:0,//横轴信息全部显示
-                        rotate:-90,//-30度角倾斜显示  
-                    }
-                },
-                yAxis: {
-                    type: 'value',
-                    axisLabel: {
-                        formatter: '{value}%',
-                    }
-                },
-                series: [{
-                    data: ydata,
-                    type: 'bar',
-                    barCategoryGap: "1%",
-                    barWidth:20
-                }]//echarts的那些配置 就是一个完整的对象 这个对象的很多属性仍然是对象
-              })
-              })
-
-              
+    
+    console.log(getChart)
+    console.log(this.display)
+    console.log(getChart.getmon())
+    this.month1=getChart.getmon()
+    //this.getmon()  //mount里面不再加载echrts 因为month1=“” 所以this.getmon（）改变month1时 会直接触发watch 所以在watch里面加载echarts就行了
   },
   watch:{
      month1(newVal,oldVal){//更改月份的时候 由于month1双向绑定 所以元素里的month1改变 data里的也会改 
@@ -130,26 +57,27 @@ export default {
                   var xdata=[]
                   var ydata=[]
                   for(let i=0;i<res.data.length;i++){
-                    
                       xdata.push(res.data[i].fenLeiYiJu)
                       ydata.push(res.data[i].guoChenpercentage*100)
                   }
                   console.log(xdata)
                   console.log(ydata)//获得echarts中x轴和y轴的data数据
-                  Echart1.setOption({
-                    title: {
-                      text:"质量生态环境"+that.month1+"月自评区域过程符合率",
-                    },
-                    xAxis: {
-                    data: xdata,
-                },
-                   series: [{
-                    data: ydata,
-                   
-                }]
-                  }) 
+
+                  getChart.getChart1(Echart1,"质量生态环境"+this.month1+"区域过程符合率",xdata,ydata)//因为getChart是对象 所以使用.语法  当前文件自然只能使用当前文件出现的变量 
+
               }) 
       }
+  },
+  methods:{
+    /* 获取日期的另一种冗余写法  方法不在vue生命周期之内  
+    getmon:function(){
+      if (this.display.theDate.getMonth()<9) {
+        this.month1=this.display.theDate.getFullYear()+"-"+"0"+(this.display.theDate.getMonth()+1)	
+      }
+      else{
+        this.month1=this.display.theDate.getFullYear()+"-"+(this.display.theDate.getMonth()+1)
+      }
+    }*/
   },
   beforeDestroy(){
           let Echart1 =null

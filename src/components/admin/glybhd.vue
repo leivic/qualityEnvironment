@@ -54,13 +54,13 @@
                     <pagehelper id="aaaa1" :page="page" ></pagehelper><!--将传过来的属性再次绑定-->
                 </div>
 		</div>
-        
+
 	</div>
 </template>
 <script>
 import snav from "./../Nav"
 import top from "./../TopCard"
-import pagehelper from "../util/pageHelper.vue" //import的变量只能是小写的 
+import pagehelper from "../util/pageHelper.vue" //import的变量只能是小写的
 export default {
 data(){
 return{
@@ -78,7 +78,7 @@ return{
 components: {
     snav,
     top,
-    pagehelper
+    pagehelper,
   },
   mounted(){
       this.$axios({

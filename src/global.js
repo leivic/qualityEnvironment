@@ -15,6 +15,17 @@ let display14=false;
 let username="未登录";
 let role="未登录 ";
 var theDate = new Date();
+
+let getmon=function(month){//这个month只是形参而已 在使用时传入使用的实参  一个文件内的变量只能与当前文件内出现的变量交互
+    if (theDate.getMonth()<9) {
+      month=theDate.getFullYear()+"-"+"0"+(theDate.getMonth()+1)	
+    }
+    else{
+      month=theDate.getFullYear()+"-"+(theDate.getMonth()+1)
+    }
+  }
+
+
 export default{
     display1,
     display2,
@@ -32,5 +43,6 @@ export default{
     username,
     role,
     display14,
-    theDate 
+    theDate,
+    getmon 
 }
