@@ -22,6 +22,7 @@ import gwzlstyszt from '@/components/gwzlstyszt'
 import glygwzlstys from '@/components/admin/glygwstys'
 import glybhd from '@/components/admin/glybhd'
 import bhd from '@/components/bhd'
+import glygwfhl from '@/components/admin/glygwfhl' 
 Vue.use(Router)
 
 export default new Router({
@@ -135,6 +136,11 @@ export default new Router({
       path: '/bhd',
       name: 'bhd',
       component: bhd
+    },
+    {
+      path: '/glygwfhl',
+      name: 'glygwfhl',
+      component: glygwfhl
     },
   ]
 })
