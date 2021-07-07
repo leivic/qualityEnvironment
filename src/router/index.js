@@ -22,7 +22,8 @@ import gwzlstyszt from '@/components/gwzlstyszt'
 import glygwzlstys from '@/components/admin/glygwstys'
 import glybhd from '@/components/admin/glybhd'
 import bhd from '@/components/bhd'
-import glygwfhl from '@/components/admin/glygwfhl' 
+import glygwfhl from '@/components/admin/glygwfhl'
+import gwfgl from '@/components/gwfgl' 
 Vue.use(Router)
 
 export default new Router({
@@ -141,6 +142,11 @@ export default new Router({
       path: '/glygwfhl',
       name: 'glygwfhl',
       component: glygwfhl
+    },
+    {
+      path: '/gwfgl',
+      name: 'gwfgl',
+      component: gwfgl
     },
   ]
 })
