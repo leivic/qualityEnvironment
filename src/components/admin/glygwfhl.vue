@@ -59,6 +59,19 @@
                 机加：{{gongwei.jijia}} ----
                 装配：{{gongwei.zhuangpei}} <br/>
                 <br/>总数：{{gongwei.zongshu}}
+
+                    <div class="form-group col-md-4" id="state">
+                    <select id="inputState" class="form-control" v-model="selectValue">
+                        <option selected>冲压车间</option>
+                        <option>车身车间</option>
+                        <option>涂装车间</option>
+                        <option>总装车间</option>
+                        <option>机加车间</option>
+                        <option>总装车间</option>
+                    </select>
+                    <input type="text" class="form-control" id="inputZip" v-model="genggai"><!--input中进行输入框数据的双向绑定 v-model-->
+                    <button  class="btn btn-primary" id="genggai" @click="genggaishuju">更改</button>
+                    </div>
             </div>
         </div>
 	</div>
@@ -87,7 +100,9 @@ return{
         jijia:"",
         zhuangpei:"",
         zongshu:""
-    }
+    },
+    genggai:"",
+    selectValue:""
 }
 },
 components: {
@@ -187,6 +202,21 @@ components: {
                   console.log(res.data)
                   this.tabledata=res.data 
               })
+      },
+      genggaishuju(){
+         this.$axios({
+	      method:"post",
+	      params:{
+                  quYu:this.selectValue,
+                  shuliang:this.genggai
+              },
+              url:'http://localhost:8090/changeGongWeiShu',
+              }).then(()=>{
+                  alert("更改工位配置数成功") //简单的更改数据方法 
+                  
+              })//缺了数据刷新的方式 页面数据不能及时更新 
+        
+        
       }
   }
 }
@@ -246,5 +276,21 @@ components: {
       width: 50%;
       float: right;
       
+  }
+  #state{
+      position: absolute; /*顶上个定位的父级元素*/
+      right:0px;
+      top:35px;
+      width: 25%;
+  }
+  #inputZip{
+      float: left;
+      margin-top: 10px;
+      width: 45%
+  }
+  #genggai{
+       float: right;
+      margin-top: 10px;
+      width: 45%
   }
 </style>
