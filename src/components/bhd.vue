@@ -6,6 +6,7 @@
 		<div id="monthpickkerbox">
 			<el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
 		</div>
+		<pagenav href1="#/bhd" href2="#/bhd2"></pagenav>
 	</div>
 </template>
 <script>
@@ -28,7 +29,8 @@ let Echart1
 export default {
 components: {
     snav,
-    top
+    top,
+    pagenav
   },
 data(){
 	return {

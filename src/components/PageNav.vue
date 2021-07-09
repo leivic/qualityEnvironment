@@ -18,7 +18,7 @@ export default {
 <style>
     #pageNav{
         position: absolute;
-        right: 5px;
-        top: 105px;
+        right: 1px;
+        top: 100px;
     }
 </style>
