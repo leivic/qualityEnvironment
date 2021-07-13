@@ -198,6 +198,8 @@ components: {
   }
  #gly1mid{
      text-align: center;
+     white-space: nowrap;/*文本不换行 搭配滚动条食用*/
+    overflow-x: auto;/*添加x轴滚动条 */
  }
   .list-group{
       width: 70%;

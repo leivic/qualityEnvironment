@@ -3,21 +3,20 @@
 		<top></top>
 		<snav styadmin="color:#99FFFF"></snav><!--子组件绑定值在props里面 传到父组件参数成了标签的属性-->
 		<div id="gly1" style="{width: '85%', height: '550px'}">
-                <div id="gly1top">
-                    <div id="gly1topleft">
-                        <h3>工位信息管理</h3>
-                    </div>
-                    <div id="gly1topright ">
-                        <form>
-                            <div class="glyzpgwrightbox">
-                                <input type="file" id="exampleFormControlFile1" @change="upload()" accept=".xlsx">
-                            </div><!--form里面的input type=file时 处理文件上传需求 @change＝“upload（）” dom元素change事件绑定了一个upload（）方法在vue的methods里-->
-                        </form>
-                    </div>
-                </div>
+                
                 <div id="gly1mid">
                     <table class="table">
                 <thead class="thead-light">
+                    <tr>
+                       <th scope="col" colspan="6">工位信息管理</th>
+                        <th scope="col" colspan="5">
+                                <form>
+                                <div class="glyzpgwrightbox">
+                                <input type="file" id="exampleFormControlFile1" @change="upload()" accept=".xlsx">
+                                </div><!--form里面的input type=file时 处理文件上传需求 @change＝“upload（）” dom元素change事件绑定了一个upload（）方法在vue的methods里-->
+                                </form>
+                        </th> 
+                    </tr>
                     <tr>
                     <th scope="col" width="4%">#</th>
                     <th scope="col" width="12%">工作模块</th>
@@ -172,6 +171,7 @@ components: {
     width: 85%;
     height: 600px;
     position: relative;
+   
   }
   #gly1top{
       height: 10%;
@@ -194,7 +194,10 @@ components: {
       float: right;
       margin-left: 3px;
   }
- 
+#gly1mid{
+    white-space: nowrap;/*文本不换行 搭配滚动条食用*/
+    overflow-x: auto;/*添加x轴滚动条 */
+}
   .list-group{
       width: 70%;
       margin: 0 auto;

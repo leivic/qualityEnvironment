@@ -40,9 +40,11 @@
                         <a class="dropdown-item" href="http://localhost:8080/#/glygwzlstys">工位质量生态意识信息管理</a>
                         <a class="dropdown-item" href="http://localhost:8080/#/glybhd">变化点信息管理</a>
                     </div>
+                    
                 </li>
             </ul>
         </div>
+       
     </div>
 </template>
 <script>
@@ -61,8 +63,12 @@ props:["styxyjf","stysthj","stystys","styadmin"]//vue中 html标签的属性都�
    #navback{
        float: left;
        width: 15%;
-       height: 750px;
+       height:750px;
        background:linear-gradient(#243949,#517fa4);
-
+        /*之前是这样写的  float: left;
+       width: 15%;
+       height:750px;
+       background:linear-gradient(#243949,#517fa4); 但是这样很明显有问题 一般我们不设置高度的 要让他自适应高度 
+       但是这里如果不设置高度 背景色就不能自适应填充 这个问题后面再处理 */
    }
 </style>

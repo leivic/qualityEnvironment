@@ -22,6 +22,7 @@ import gwzlstyszt from '@/components/gwzlstyszt'
 import glygwzlstys from '@/components/admin/glygwstys'
 import glybhd from '@/components/admin/glybhd'
 import bhd from '@/components/bhd'
+import bhd2 from '@/components/bhd2'
 import glygwfhl from '@/components/admin/glygwfhl'
 import gwfgl from '@/components/gwfgl'
 import gwfgl2 from '@/components/gwfgl2'  
@@ -153,6 +154,11 @@ export default new Router({
       path: '/gwfgl2',
       name: 'gwfgl2',
       component: gwfgl2
+    },
+    {
+      path: '/bhd2',
+      name: 'bhd2',
+      component: bhd2
     },
   ]
 })
