@@ -15,7 +15,6 @@
                         <a class="dropdown-item" href="http://localhost:8080/#/zpgw">自评工位</a>
                         <a class="dropdown-item" href="http://localhost:8080/#/gwcc">工位抽查</a>
                         <a class="dropdown-item" href="http://localhost:8080/#/wjxd1">文件修订</a>
-                        <a class="dropdown-item" href="#">文明工作者</a>
                     </div>
                 </li>
                 <li class="nav-item dropright">
@@ -39,6 +38,7 @@
                         <a class="dropdown-item" href="http://localhost:8080/#/glygwfhl">工位覆盖率信息管理</a> 
                         <a class="dropdown-item" href="http://localhost:8080/#/glygwzlstys">工位质量生态意识信息管理</a>
                         <a class="dropdown-item" href="http://localhost:8080/#/glybhd">变化点信息管理</a>
+                        <a class="dropdown-item" href="http://localhost:8080/#/glywjxd">文件修订管理</a>
                     </div>
                     
                 </li>

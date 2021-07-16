@@ -1,122 +1,170 @@
 <template>
-    <div>
-        <top></top>
-            <snav stysthj="color:#99FFFF"></snav>
-            <div id="chartWjxd1" style="{width: '75%', height: '400px'}"></div>
-           <pagenav href1="#/wjxd1" href2="#/wjxd2"></pagenav><!--组件传过来的属性值 -->
-    </div>
+	<div>
+		<top></top>
+            	<snav stystys="color:#99FFFF"></snav>
+		<div id="chartWjxd" style="{width: '75%', height: '400px'}"></div>
+		<div id="monthpickkerbox">
+			<el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
+		</div>
+	</div>
 </template>
 <script>
 import snav from "./Nav"
-import top from "./TopCard"
-import pagenav from "./PageNav"
-let echarts = require('echarts/lib/echarts')
-import { GridComponent } from 'echarts/components';
-import PageNav from './PageNav.vue'
-echarts.use([GridComponent]);
-// 引入柱状图组件 我是使用npm install echarts 安装最新版的echarts 版本不一样
-//引入可能也会有一些差别 
-import { ToolboxComponent } from 'echarts/components';
-echarts.use([ToolboxComponent]);
-import { LineChart } from 'echarts/charts';
-echarts.use([LineChart]);
-require('echarts/lib/chart/bar')
-// 引入提示框和title组件
-require('echarts/lib/component/tooltip')
-require('echarts/lib/component/title')
-require('echarts/lib/component/legend')
-let Echart1     
+import top from "./TopCard" 
+import pagenav from"./PageNav.vue"
+import getChart from '@/util'
+
+let Echart1
 export default {
-    components: {
-        snav,
-        top,
-        pagenav
-    },
-    mounted(){
-        let myChart = echarts.init(document.getElementById('chartWjxd1'))
-        Echart1=myChart
-        Echart1.setOption({
-            tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross',
-            crossStyle: {
-                color: '#999'
-            }
+components: {
+    snav,
+    top
+  },
+data(){
+	return {
+		month1:"",
+		zongfen:"80",
+		jigefen:"64"
+		
+	}
+},
+mounted(){
+	let myChart = getChart.echarts.init(document.getElementById('chartWjxd')) //获得一个dom元素 传入echarts对象的init方法 这是个静态方法 不出意外是写在原型上的 
+	Echart1 = myChart
+	var that=this
+	Echart1.setOption({
+				title: {
+					text:"",
+					textStyle:{
+					fontSize:22
+					},
+					left: "20%",
+				},  
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+					type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+					}
+				},
+				legend: {
+					data: ['文件数', '累计修订', '累计完成率'],
+					right: "5%"
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis: [
+					{
+					type: 'category',
+					axisLabel: {
+						interval:0,//横轴信息全部显示
+						rotate:-90,//-30度角倾斜显示  
+					} 
+					}
+				],
+				yAxis: [
+					{
+					type: 'value',
+					
+					}
+				],
+				series: [
+					{
+					name: '文件数',
+					type: 'bar',
+					emphasis: {
+						focus: 'series'
+					},
+					barCategoryGap: "1%",
+					barWidth:20
+					},
+					{
+					name: '累计修订',
+					type: 'bar',
+					stack: '意识得分',
+					emphasis: {
+						focus: 'series'
+					},
+					barCategoryGap: "1%",
+					barWidth:20
+					},
+					{
+                        name: '累计完成率',
+						type: 'line'
+					}
+				]
+				});
+	this.month1=getChart.getmon()
+	
+},
+watch:{
+	month1(newVal,oldVal){
+		console.log(newVal+","+oldVal)
+		var that=this
+		this.$axios({
+		method:"post",
+		url:'http://localhost:8090/getSencondWenJianDataByDate',
+		params:{
+			date:this.month1
+		},
+		}).then((res)=>{
+			console.log(res.data)
+			let ydata=[]
+			let wenjianjihuadata=[]
+			let wanchendata=[]
+			let gailvdata=[]
+			for(let i=0;i<res.data.length;i++){
+				ydata.push(res.data[i].quYu)
+				wenjianjihuadata.push(res.data[i].jiHuaShu)
+				wanchendata.push(res.data[i].wanChenShu)
+				gailvdata.push((res.data[i].wanChenShu/res.data[i].jiHuaShu)) 
+			}
+			Echart1.setOption({
+				title: {
+					text:that.month1+"文件修订情况",
+				},
+				xAxis: [
+					{
+					data: ydata
+					}
+				],  
+				series: [
+					{
+					data: wenjianjihuadata,
+					},
+					{
+					data: wanchendata,
+					},
+					{
+						data: gailvdata,
+					}
+				]
+				});
+
+		})	
+		
+	}
+},
+beforeDestroy(){
+          let Echart1 =null
         }
-    },
-    toolbox: {
-        feature: {
-            dataView: {show: true, readOnly: false},
-            magicType: {show: true, type: ['line', 'bar']},
-            restore: {show: true},
-            saveAsImage: {show: true}
-        },
-        right: "10%"
-    },
-    legend: {
-        data: ['文件数', '累计修订', '累计完成率']
-    },
-    xAxis: [
-        {
-            type: 'category',
-            data: ['冲压', '车身', '涂装', '总装', '维修','技术质量' ,'采购', '发动机', 'HR', 'IT', '制造工程科', '运行及计划科'],
-            axisPointer: {
-                type: 'shadow'
-            },
-            axisLabel: {
-                        interval:0,//横轴信息全部显示
-                        rotate:-30,//-30度角倾斜显示  
-                    }
-        }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            name: '个数',
-            min: 0,
-            axisLabel: {
-                formatter: '{value}个'
-            }
-        },
-        {
-            type: 'value',
-            name: '完成率',
-            min: 0,
-            max: 100,
-            interval: 20,
-            axisLabel: {
-                formatter: '{value} %'
-            }
-        }
-    ],
-    series: [
-        {
-            name: '文件数',
-            type: 'bar',
-            data: [19, 15, 8, 14, 31, 32, 31, 6, 8, 2, 26, 8]
-        },
-        {
-            name: '累计修订',
-            type: 'bar',
-            data: [19, 15, 8, 14, 31, 32, 31, 6, 8, 2, 16, 8]
-        },
-        {
-            name: '累计完成率',
-            type: 'line',
-            yAxisIndex: 1,
-            data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 60,100]
-        }
-    ]
-        })
-    }
-    
 }
 </script>
 <style>
-#chartWjxd1{
+#chartWjxd{
     float: right;
     width: 85%;
     height: 600px;
+  }
+  #monthpickkerbox{
+    position: absolute;
+    left: 15%;
+  }
+  #monthpicker{
+    border:none;
+    background: none;
   }
 </style>

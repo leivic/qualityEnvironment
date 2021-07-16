@@ -59,8 +59,7 @@
                 机加：{{gongwei.jijia}} ----
                 装配：{{gongwei.zhuangpei}} <br/>
                 <br/>总数：{{gongwei.zongshu}}
-
-                    <div class="form-group col-md-4" id="state">
+            <div  id="state1">
                     <select id="inputState" class="form-control" v-model="selectValue">
                         <option selected>冲压车间</option>
                         <option>车身车间</option>
@@ -72,8 +71,10 @@
                     <input type="text" class="form-control" id="inputZip" v-model="genggai"><!--input中进行输入框数据的双向绑定 v-model-->
                     <button  class="btn btn-primary" id="genggai" @click="genggaishuju">更改</button>
                     </div>
+                   
             </div>
         </div>
+       
 	</div>
 </template>
 <script>
@@ -272,23 +273,24 @@ components: {
       position: absolute;
       right:0px;
       top: 670px;
-    
+      
   }
   #additional_right{
       width: 50%;
       float: right;
       
   }
-  #state{
-      position: absolute; /*顶上个定位的父级元素*/
-      right:0px;
-      top:35px;
-      width: 25%;
+  #state1{
+      position:absolute;
+      right: 0px;
+      top: 35px;
+      width: 25%; /*开发中此处css 出现过错误 其实是另外一个文件里的state影响了这里的css  vue的css如果没有加scoped 是共用的*/
   }
   #inputZip{
       float: left;
       margin-top: 10px;
-      width: 45%
+      width: 45%;
+     
   }
   #genggai{
        float: right;
