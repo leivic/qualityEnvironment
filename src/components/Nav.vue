@@ -35,10 +35,10 @@
                         <a class="dropdown-item" href="http://localhost:8080/#/adminyhxx">用户信息管理</a>
                         <a class="dropdown-item" href="http://localhost:8080/#/glyzpgw">工位信息管理</a>
                         <a class="dropdown-item" href="http://localhost:8080/#/glygccc">过程信息管理</a>
+                        <a class="dropdown-item" href="http://localhost:8080/#/glywjxd">文件修订管理</a>
                         <a class="dropdown-item" href="http://localhost:8080/#/glygwfhl">工位覆盖率信息管理</a> 
                         <a class="dropdown-item" href="http://localhost:8080/#/glygwzlstys">工位质量生态意识信息管理</a>
                         <a class="dropdown-item" href="http://localhost:8080/#/glybhd">变化点信息管理</a>
-                        <a class="dropdown-item" href="http://localhost:8080/#/glywjxd">文件修订管理</a>
                     </div>
                     
                 </li>

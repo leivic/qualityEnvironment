@@ -8,14 +8,29 @@
 		</div>
 		<pagenav href1="#/gwfgl" href2="#/gwfgl2"></pagenav>
 		<div class="form-group col-md-4" id="state">
-                    <select id="inputState" class="form-control" v-model="quYu">
+		<el-dropdown @command="handleCommand">
+		<span class="el-dropdown-link">
+		{{quYu}}<i class="el-icon-arrow-down el-icon--right"></i>
+		</span v-model="quYu">
+		<el-dropdown-menu slot="dropdown">
+		<el-dropdown-item command="冲压车间">冲压车间</el-dropdown-item>
+		<el-dropdown-item command="车身车间">车身车间</el-dropdown-item>
+		<el-dropdown-item command="涂装车间">涂装车间</el-dropdown-item>
+		<el-dropdown-item command="总装车间">总装车间</el-dropdown-item>
+		<el-dropdown-item command="机加车间">机加车间</el-dropdown-item>
+		<el-dropdown-item command="装配车间">装配车间</el-dropdown-item>	
+		</el-dropdown-menu>
+		</el-dropdown>	
+
+
+                 <!--   <select id="inputState" class="form-control" v-model="quYu">
                         <option selected>冲压车间</option>
                         <option>车身车间</option>
                         <option>涂装车间</option>
                         <option>总装车间</option>
                         <option>机加车间</option>
                         <option>总装车间</option>
-                    </select>
+                    </select>-->
 		</div>
 	</div>
 </template>
@@ -211,7 +226,12 @@ watch:{
 },
 beforeDestroy(){
           let Echart1 =null
-        }
+	},
+methods: {
+      handleCommand(command) {
+        this.quYu=command
+      }
+    }
 }
 </script>
 <style>

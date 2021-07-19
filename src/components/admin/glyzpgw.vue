@@ -10,11 +10,14 @@
                     <tr>
                        <th scope="col" colspan="6">工位信息管理</th>
                         <th scope="col" colspan="5">
-                                <form>
-                                <div class="glyzpgwrightbox">
-                                <input type="file" id="exampleFormControlFile1" @change="upload()" accept=".xlsx">
-                                </div><!--form里面的input type=file时 处理文件上传需求 @change＝“upload（）” dom元素change事件绑定了一个upload（）方法在vue的methods里-->
-                                </form>
+                               <el-upload
+                                class="upload-demo"
+                                action="http://localhost:8090/exportGongWeiFuHe"
+                                multiple
+                                :limit="3"
+                                >
+                                <el-button size="small" type="primary">点击上传</el-button>
+                                </el-upload>
                         </th> 
                     </tr>
                     <tr>
@@ -98,24 +101,6 @@ components: {
               })
   },
   methods:{
-      upload(){//上传文件功能
-         var e =document.getElementById("exampleFormControlFile1")
-         console.log(e.files[0])//e是input这个dom元素 e.files[0]是我们上传的文件 处理文件上传需求的写法
-         let file=e.files[0]
-         let formdata = new FormData(); //以formdata的格式上传 构造函数生成一个新对象 
-         formdata.append("file",file); //对象formdata 的.append方法 
-         this.$axios({
-	      method:"post",
-	      data:formdata,
-              url:'http://localhost:8090/exportGongWeiFuHe',
-              }).then((res)=>{
-                 
-              })
-         e.value="" //清空e.value
-         window.alert("导入成功")
-         this.reloaddata()
-         this.reload()
-      },
       delet(id){//删除记录功能 
           this.$axios({
           method:"post",

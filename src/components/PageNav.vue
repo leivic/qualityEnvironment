@@ -1,8 +1,8 @@
 <template>
  <nav aria-label="Page navigation example" id="pageNav">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" :href="href1">1</a></li>
-    <li class="page-item"><a class="page-link" :href="href2">2</a></li>
+  <ul class="pagination pagination-sm">
+    <li class="page-item"><a class="page-link" :href="href1">表1</a></li>
+    <li class="page-item"><a class="page-link" :href="href2">表2</a></li>
   </ul>
 </nav>
 </template>

@@ -2,17 +2,18 @@
 <div>
 	<top></top>
 	<snav styadmin="color:#99FFFF"></snav>
+    <wjxd></wjxd>
 	<div id="gly1" style="{width: '90%', height: '700px'}"> 
                 <div id="gly1mid">
                     <table class="table">
 			<thead class="thead-light">
 				<tr>
 					<th>
-						<el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
+						<el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month2">{{month2}}</el-date-picker>
 					</th><!--elementui提供的日期选择器-->
 					<th scope="col" colspan="2">文件修订计划配置</th>
 					<th scope="col" ><!--新增 更改等按钮-->
-
+                       <el-button @click="moadl()">新建计划</el-button>
 					</th> 
 				</tr>
 				<tr>
@@ -95,6 +96,9 @@
 		<div id="navback1">
 
        		</div>
+        <div id="wenjianjihuaform">
+            
+        </div>
 </div>	
 </template>
 <script>
@@ -102,10 +106,11 @@ import snav from "./../Nav"
 import top from "./../TopCard"
 import pagehelper from "./../util/pageHelper.vue"
 import getChart from '@/util'
+import wjxd from "./../AddWenJianJiHua.vue"
 export default {
 data(){
 	return{
-		month1:"",
+		month2:"",
 		tabledata1:[],
 		tabledata2:[],
 		page:{
@@ -120,10 +125,11 @@ data(){
 components: {
     snav,
     top,
-    pagehelper
+    pagehelper,
+    wjxd
   },
 mounted(){
-  this.month1=getChart.getmon()//获得当月月份 month1改变 
+  this.month2=getChart.getmon()//获得当月月份 month1改变 
   
   this.$axios({
 		method:"post",
@@ -139,14 +145,14 @@ mounted(){
 	
 },
 watch:{
-	month1(newVal,oldVal){ //month1改变时ajax传参 
+	month2(newVal,oldVal){ //month1改变时ajax传参 
 		console.log(newVal+","+oldVal)
 		var that=this
 		this.$axios({
 		method:"post",
 		url:'http://localhost:8090/selectWenJianXiuDinByDate',
 		params:{
-      			date:this.month1,
+      			date:this.month2,
 		},
     }).then((res)=>{
       console.log(res.data)
@@ -218,7 +224,11 @@ methods:{
                   console.log(res.data)
                   this.tabledata2=res.data 
               })
-      }
+      },
+       moadl(){
+          var a =document.getElementsByClassName("modal1")[0]/*根据类名取dom 取出来是一个*/
+          a.style.display="block" //操作dom元素 用js动态改变dom元素的style样式  这里是基于点击事件绑定一个函数改变样式 应用场景：弹窗
+      },
   }
 }
 
@@ -268,4 +278,7 @@ methods:{
        background:linear-gradient(#243949,#517fa4);
         /*暂时采用这种笨办法*/
    }
+    .modal1{
+      display: none;   /*vue里面的css是共用的  要牢记他是一个单页面应用*/
+  }
 </style>

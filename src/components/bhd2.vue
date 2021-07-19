@@ -17,9 +17,9 @@
                        
 			<th scope="col" colspan="2">
 				<nav aria-label="Page navigation example" id="pageNavbhd2">
-				<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="http://localhost:8080/#/bhd">1</a></li>
-				<li class="page-item"><a class="page-link" href="http://localhost:8080/#/bhd2">2</a></li>
+				<ul class="pagination pagination-sm">
+				<li class="page-item"><a class="page-link" href="http://localhost:8080/#/bhd">表1</a></li>
+				<li class="page-item"><a class="page-link" href="http://localhost:8080/#/bhd2">表2</a></li>
 				</ul>
 				</nav>
 			</th>
