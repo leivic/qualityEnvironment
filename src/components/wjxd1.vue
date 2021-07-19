@@ -2,10 +2,11 @@
 	<div>
 		<top></top>
             	<snav stystys="color:#99FFFF"></snav>
-		<div id="chartWjxd" style="{width: '75%', height: '400px'}"></div>
+		<div id="chartWjxd" style="{width: '85%', height: '600px'}"></div>
 		<div id="monthpickkerbox">
 			<el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
 		</div>
+		<pagenav href1="#/wjxd1" href2="#/wjxd2"></pagenav>
 	</div>
 </template>
 <script>
@@ -18,13 +19,13 @@ let Echart1
 export default {
 components: {
     snav,
-    top
+    top,
+    pagenav
   },
 data(){
 	return {
 		month1:"",
-		zongfen:"80",
-		jigefen:"64"
+		
 		
 	}
 },
@@ -36,9 +37,11 @@ mounted(){
 				title: {
 					text:"",
 					textStyle:{
-					fontSize:22
+					fontSize:22,
+					fontWeight: "normal",
+					fontFamily: "Courier New"
 					},
-					left: "20%",
+					left: "30%",
 				},  
 				tooltip: {
 					trigger: 'axis',
@@ -48,7 +51,7 @@ mounted(){
 				},
 				legend: {
 					data: ['文件数', '累计修订', '累计完成率'],
-					right: "5%"
+					right: "8%"
 				},
 				grid: {
 					left: '3%',
@@ -61,14 +64,26 @@ mounted(){
 					type: 'category',
 					axisLabel: {
 						interval:0,//横轴信息全部显示
-						rotate:-90,//-30度角倾斜显示  
+						rotate:-60,//-30度角倾斜显示  
 					} 
 					}
 				],
 				yAxis: [
 					{
 					type: 'value',
-					
+					name: '文件数',
+					axisLabel: {
+						formatter: '{value} '
+					}
+					},
+					{
+					type: 'value',
+					name: '累计完成率',
+					min:0,
+					max: 100,
+					axisLabel: {
+						formatter: '{value} ％'
+					}
 					}
 				],
 				series: [
@@ -92,8 +107,9 @@ mounted(){
 					barWidth:20
 					},
 					{
-                        name: '累计完成率',
-						type: 'line'
+                        		name: '累计完成率',
+					type: 'line',
+					yAxisIndex: 1
 					}
 				]
 				});
@@ -120,8 +136,9 @@ watch:{
 				ydata.push(res.data[i].quYu)
 				wenjianjihuadata.push(res.data[i].jiHuaShu)
 				wanchendata.push(res.data[i].wanChenShu)
-				gailvdata.push((res.data[i].wanChenShu/res.data[i].jiHuaShu)) 
+				gailvdata.push((res.data[i].wanChenShu/res.data[i].jiHuaShu)*100) 
 			}
+			
 			Echart1.setOption({
 				title: {
 					text:that.month1+"文件修订情况",
@@ -139,7 +156,7 @@ watch:{
 					data: wanchendata,
 					},
 					{
-						data: gailvdata,
+					data: gailvdata,
 					}
 				]
 				});
