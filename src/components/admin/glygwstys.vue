@@ -2,7 +2,7 @@
 	<div>
 		<top></top>
 		<snav styadmin="color:#99FFFF"></snav><!--子组件绑定值在props里面 传到父组件参数成了标签的属性-->
-		<div id="gly1" style="{width: '85%', height: '550px'}">
+		<div id="gly1" style="{width: '90%', height: '700px'}">
                 <div id="gly1top">
                     <div id="gly1topleft3">
                         <h3>工位质量生态意识信息管理</h3>
@@ -170,8 +170,8 @@ components: {
 <style>
  #gly1{
     float: right;
-    width: 85%;
-    height: 600px;
+    width: 90%;
+    height: 700px;
     position: relative;
     
   }

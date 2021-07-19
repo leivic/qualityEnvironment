@@ -4,7 +4,7 @@
             background
             @current-change="page.handleCurrentChange"
             :current-page="page.pageNum"
-            :page-sizes="[8]"
+            :page-sizes="[10]"
             layout="total, sizes, prev, pager, next, jumper"
         >
         </el-pagination>

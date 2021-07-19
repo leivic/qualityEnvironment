@@ -5,7 +5,7 @@
 		
 
 
-        <div id="gly1" style="{width: '85%', height: '550px'}">
+        <div id="gly1" style="{width: '90%', height: '700px'}">
                 
                 <div id="gly1mid">
                     <table class="table">
@@ -124,8 +124,9 @@ components: {
 <style scoped>
  #gly1{
     float: right;
-    width: 85%;
+    width: 90%;
     position: relative;
+    height: 700px;
   
   }
   

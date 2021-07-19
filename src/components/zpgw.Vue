@@ -2,7 +2,7 @@
     <div> 
             <top></top>
             <snav stysthj="color:#99FFFF"></snav>
-            <div id="chartZpgw1" style="{width: '75%', height: '400px'}"></div>
+            <div id="chartZpgw1" style="{width: '90%', height: '650px'}"></div>
             <div id="monthpickkerbox">
               <el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
             </div>
@@ -71,13 +71,13 @@ export default {
 <style>
   #chartZpgw1{
     float: right;
-    width: 85%;
-    height: 600px;
+    width: 90%;
+    height: 650px;
     
   }
   #monthpickkerbox{
     position: absolute;
-    left: 15%;
+    left: 10%;
     color: rgb(233, 239, 247);
   }
   #monthpicker{

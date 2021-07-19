@@ -2,7 +2,7 @@
 	<div>
 		<top></top>
             	<snav stystys="color:#99FFFF"></snav>
-		<div id="chartGwfgl" style="{width: '75%', height: '400px'}"></div>
+		<div id="chartGwfgl" style="{width: '90%', height: '650px'}"></div>
 		<div id="monthpickkerbox">
 			<el-date-picker  id="monthpicker" type="year" value-format="yyyy" v-model="year1">{{year1}}</el-date-picker>
 		</div>
@@ -46,7 +46,9 @@ mounted(){
 	Echart1.setOption({	title: {
 					text:"",
 					textStyle:{
-					fontSize:22
+					fontSize:22,
+					fontWeight: "normal",
+					fontFamily: "Courier New"
 					},
 					left: "36%",
 				},  
@@ -215,12 +217,12 @@ beforeDestroy(){
 <style>
 #chartGwfgl{
     float: right;
-    width: 85%;
-    height: 600px;
+    width: 90%;
+    height: 650px;
   }
   #monthpickkerbox{
     position: absolute;
-    left: 15%;
+    left: 10%;
   }
   #monthpicker{
     border:none;

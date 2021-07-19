@@ -2,7 +2,7 @@
 	<div>
 		<top></top>
             	<snav stystys="color:#99FFFF"></snav>
-		<div id="chartGwzlstyszt" style="{width: '75%', height: '400px'}"></div>
+		<div id="chartGwzlstyszt" style="{width: '90%', height: '650px'}"></div>
 		<div id="monthpickkerbox">
 			<el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1">{{month1}}</el-date-picker>
 		</div>
@@ -103,8 +103,10 @@ mounted(){
 				title: {
 				text:"质量生态意识"+month2+"变化点措施落实率",
 				textStyle:{
-				fontSize:22
-				},
+					fontSize:22,
+					fontWeight: "normal",
+					fontFamily: "Courier New"
+					},
 				left: "center",
 				},
 				tooltip: {
@@ -188,12 +190,12 @@ beforeDestroy(){
 <style>
 #chartGwzlstyszt{
     float: right;
-    width: 85%;
-    height: 600px;
+    width: 90%;
+    height: 650px;
   }
   #monthpickkerbox{
     position: absolute;
-    left: 15%;
+    left: 10%;
   }
   #monthpicker{
     border:none;

@@ -2,7 +2,7 @@
 	<div>
 		<top></top>
 		<snav styadmin="color:#99FFFF"></snav>
-		<div id="gly1" style="{width: '85%', height: '550px'}">
+		<div id="gly1" style="{width: '90%', height: '700px'}">
                
 			 
                 <div id="gly1mid">
@@ -168,8 +168,8 @@ components: {
 <style>
  #gly1{
     float: right;
-    width: 85%;
-    height: 600px;
+    width: 90%;
+    height: 700px;
     position: relative;
     
   }

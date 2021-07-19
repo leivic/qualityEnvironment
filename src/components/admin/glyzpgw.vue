@@ -2,7 +2,7 @@
 	<div>
 		<top></top>
 		<snav styadmin="color:#99FFFF"></snav><!--子组件绑定值在props里面 传到父组件参数成了标签的属性-->
-		<div id="gly1" style="{width: '85%', height: '550px'}">
+		<div id="gly1" style="{width: '85%', height: '700px'}">
                 
                 <div id="gly1mid">
                     <table class="table">
@@ -168,31 +168,10 @@ components: {
 <style>
  #gly1{
     float: right;
-    width: 85%;
-    height: 600px;
+    width: 90%;
+    height: 700px;
     position: relative;
    
-  }
-  #gly1top{
-      height: 10%;
-      padding: 3px;
-  }
-  #gly1topleft{
-      float: left;
-      height: 100%;
-      width: 25%;
-     
-      text-align: center;
-      line-height: 100%;
-  }
-   #gly1topright{
-      float: right;
-      height: 100%;
-      width: 43%;
-  }
-  .glyzpgwrightbox{
-      float: right;
-      margin-left: 3px;
   }
 #gly1mid{
     white-space: nowrap;/*文本不换行 搭配滚动条食用*/

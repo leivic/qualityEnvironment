@@ -19,8 +19,10 @@ let getChart1 = function(chart,title,xdata,ydata){
 		title: {
 		  text:title,
 		  textStyle:{
-		    fontSize:22
-		  },
+			fontSize:22,
+			fontWeight: "normal",
+			fontFamily: "Courier New"
+			},
 		  left: "center",
 		},
 		tooltip: {
@@ -43,7 +45,7 @@ let getChart1 = function(chart,title,xdata,ydata){
 		    data: xdata,
 		    axisLabel: {
 			interval:0,//横轴信息全部显示
-			rotate:-90,//-30度角倾斜显示  
+			rotate:-50,//-30度角倾斜显示  
 		    }
 		},
 		yAxis: {
@@ -65,9 +67,11 @@ let getChart1 = function(chart,title,xdata,ydata){
 let getChart2=function(chart){    //没有数据 但有别的 
 	chart.setOption({
 		title: {
-		  textStyle:{
-		    fontSize:22
-		  },
+			textStyle:{
+				fontSize:22,
+				fontWeight: "normal",
+				fontFamily: "Courier New"
+				},
 		  left: "center",
 		},
 		tooltip: {
@@ -89,10 +93,11 @@ let getChart2=function(chart){    //没有数据 但有别的
 		    type: 'category',
 		    axisLabel: {
 			interval:0,//横轴信息全部显示
-			rotate:-90,//-30度角倾斜显示  
+			rotate:-60,//-30度角倾斜显示  
 		    }
 		},
 		yAxis: {
+		    max:100,
 		    type: 'value',
 		    axisLabel: {
 			formatter: '{value}%',

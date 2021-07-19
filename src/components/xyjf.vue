@@ -2,7 +2,7 @@
     <div>
         <top></top>
         <snav styxyjf="color:#99FFFF"></snav>
-        <div id="chartXyjf1" style="{width: '75%', height: '400px'}"></div>
+        <div id="chartXyjf1" style="{width: '90%', height: '650px'}"></div>
     </div>
 </template> 
 <script>
@@ -29,7 +29,7 @@ export default {
 <style>
  #chartXyjf1{
     float: right;
-    width: 85%;
-    height: 600px;
+    width: 90%;
+    height: 650px;
   }
 </style>

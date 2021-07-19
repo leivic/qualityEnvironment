@@ -2,7 +2,7 @@
 	<div>
 		<top></top>
 		<snav styadmin="color:#99FFFF"></snav><!--子组件绑定值在props里面 传到父组件参数成了标签的属性-->
-		<div id="gly1" style="{width: '85%', height: '550px'}">
+		<div id="gly1" style="{width: '90%', height: '700px'}">
                 
                 <div id="gly1mid">
                     <table class="table">
@@ -57,7 +57,7 @@
 		</div>
 
 
-        <div id="gly1" style="{width: '85%', height: '550px'}">
+        <div id="gly1" style="{width: '90%', height: '700px'}">
                 
                 <div id="gly1mid">
                     <table class="table">
@@ -281,7 +281,7 @@ components: {
 <style scoped>
  #gly1{
     float: right;
-    width: 85%;
+    width: 90%;
     position: relative;
   
   }
@@ -314,8 +314,8 @@ components: {
 
   #navback1 {
        float: left;
-       width: 15%;
-       height:500px;
+       width: 10%;
+       height:570px;
        background:linear-gradient(#243949,#517fa4);
         /*暂时采用这种笨办法*/
    }

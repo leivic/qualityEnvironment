@@ -2,7 +2,7 @@
 <div>
 	<top></top>
 	<snav styadmin="color:#99FFFF"></snav>
-	<div id="gly1" style="{width: '85%', height: '550px'}"> 
+	<div id="gly1" style="{width: '90%', height: '700px'}"> 
                 <div id="gly1mid">
                     <table class="table">
 			<thead class="thead-light">
@@ -45,7 +45,7 @@
 	</div>
 
 	<!--下方是文件修订信息-->
-	<div id="gly1" style="{width: '85%', height: '550px'}">
+	<div id="gly1" style="{width: '90%', height: '700px'}">
                 
                 <div id="gly1mid">
                     <table class="table">
@@ -230,9 +230,9 @@ methods:{
   }
 #gly1{
     float: right;
-    width: 85%;
+    width: 90%;
     position: relative;
-    height: 550px;
+    height: 700px;
     overflow-y:auto; /*看起来是搭配高度食用的*/
   }
  .glyzpgwrightbox{
@@ -263,8 +263,8 @@ methods:{
   }
   #navback1 {
        float: left;
-       width: 15%;
-       height:500px;
+       width: 10%;
+       height:570px;
        background:linear-gradient(#243949,#517fa4);
         /*暂时采用这种笨办法*/
    }
