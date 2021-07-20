@@ -27,7 +27,7 @@
                         <a class="dropdown-item" href="http://localhost:8080/#/bhd">变化点</a>
                     </div>
                 </li>
-                <li class="nav-item dropright">
+                <li class="nav-item dropright" v-if="adminvisable">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" :style="styadmin" style="color:#FFFFFF">
                     admin
                     </a>
@@ -49,11 +49,23 @@
 </template>
 <script>
 export default {
-props:["styxyjf","stysthj","stystys","styadmin"]//vue中 html标签的属性都能绑定 不管是style href class id  value :style="thestyle" 就行 将属性绑定到model层 成了vue实例的一个data  直接在data里面的return thestyle："“赋值就成 vue里面调用直接 this.thestyle＝“”就成  
+data(){
+    return{
+        adminvisable:true
+    }
+},
+props:["styxyjf","stysthj","stystys","styadmin"],//vue中 html标签的属性都能绑定 不管是style href class id  value :style="thestyle" 就行 将属性绑定到model层 成了vue实例的一个data  直接在data里面的return thestyle："“赋值就成 vue里面调用直接 this.thestyle＝“”就成  
+mounted(){
+    if (sessionStorage.getItem("authority")!="管理员"){
+        this.adminvisable=false
+    }
+    else{this.adminvisable=true}
+}
 }
 </script>
 <style scoped>
    .navbar-nav{
+       
        position: fixed;
        left: 0px;
        top: 100px;

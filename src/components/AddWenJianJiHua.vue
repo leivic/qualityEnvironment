@@ -24,7 +24,6 @@
                         <div id="monthpickkerbox">
                         <el-date-picker  id="monthpicker" type="month" value-format="yyyy-MM" v-model="month1"></el-date-picker></el-date-picker>
                         </div><!--elment ui 库的标签 v-model双向绑定month1 绑定了一个vue组建实例的data值-->
-                        <input type="text" class="form-control" id="message-text" >  
                     </div>
                     </form>
                 </div>

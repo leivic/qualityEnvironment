@@ -60,9 +60,8 @@ export default {
  }
  .userinfobox{
      float: right;
-     width: 35%;
+     width: 45%;
      height: 100%;
      line-height: 100%;
-    
  }
 </style>

@@ -32,7 +32,7 @@
 					<th scope="col">{{item.quYu}}</th>
 					<th scope="col">{{item.jiHuaShu}}</th>
 					<td>
-						<a href="#" @click="delet(item.id)">
+						<a href="#" @click="deletJiHua(item.id)">
 						删除
 						</a><!--链接由此获得数据库id  item.id本就是从数据库取出来的-->
 					</td>
@@ -62,11 +62,11 @@
                         </th> 
                     </tr>
                     <tr>
-                    <th scope="col" width="4%">#</th>
-                    <th scope="col" width="12%">评审日期</th>
-                    <th scope="col" width="9%">区域</th>
-                    <th scope="col" width="10%">文件名称</th>
-                    <th scope="col" width="12%">修改类型</th>
+                    <th scope="col" width="5%">#</th>
+                    <th scope="col" width="15%">评审日期</th>
+                    <th scope="col" width="40%">区域</th>
+                    <th scope="col" width="80%">文件名称</th>
+                    <th scope="col" width="10%">修改类型</th>
 		    <th scope="col" width="9%">#</th>
                     </tr>
                 </thead>
@@ -189,8 +189,32 @@ methods:{
               }).then((res)=>{
                   console.log(res.data)
               }),
+          alert("删除成功")
           this.reloaddata()
           this.reload()
+      },
+      deletJiHua(id){
+          this.$axios({
+          method:"post",
+          params:{ 
+            id:id
+          },
+              url:'http://localhost:8090/deleteJiHuaById',
+              }).then((res)=>{
+                  console.log(res.data)
+              })
+          alert("删除成功")
+          this.$axios({
+                method:"post",
+                url:'http://localhost:8090/selectWenJianXiuDinByDate',
+                params:{
+                        date:this.month2,
+                },
+            }).then((res)=>{
+            console.log(res.data)
+            this.tabledata1=res.data
+            }
+            )
       },
       reloaddata(){//重新加载 表格中的数据 更改vue对象 data中绑定的值 然后 由于vue数据双向绑定 会动态更新 
          this.$axios({

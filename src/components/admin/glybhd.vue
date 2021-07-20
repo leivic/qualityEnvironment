@@ -2,9 +2,9 @@
 	<div>
 		<top></top>
 		<snav styadmin="color:#99FFFF"></snav><!--子组件绑定值在props里面 传到父组件参数成了标签的属性-->
-		<div id="gly1" style="{width: '90%', height: '700px'}">
+		<div class="gly2" style="{width: '90%', height: '700px'}">
                 
-                <div id="gly1mid">
+                <div class="gly2mid">
                     <table class="table">
                 <thead class="thead-light">
                      <tr>
@@ -21,17 +21,17 @@
                     </tr>
                     <tr>
                     <th scope="col" width="4%">#</th>
-                    <th scope="col" width="15%">工位名称</th>
+                    <th scope="col" width="20%">工位名称</th>
                     <th scope="col" width="10%">审核日期</th>
                     <th scope="col" width="15%">审核区域</th>
                     <th scope="col" width="7%">类型</th>
-		            <th scope="col" width="32%">变化点内容</th>
+		            <th scope="col" width="100%">变化点内容</th>
                     <th scope="col" width="10%">是否ok</th>
 		            <th scope="col" width="7%">#</th> 
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in tabledata" v-if="isShow"><!--v for的最基础用法  这里要循环的是
+                    <tr v-for="item in tabledata"><!--v for的最基础用法  这里要循环的是
                     这个tr，这一行 当然也包括行里的每一个单元格 所以在tr上v－for 在单元格上取值 tabledata是直接绑定在
                     下面data里面的数组数据 item就代表每一项 应用场景：1.动态获取相同格式数据时 2.接收后端列表，循环取出每一条时
                     item.id 直接和对象数组的用法一样的 item就是每个对象 可以使用.语法 取属性 -->
@@ -57,9 +57,9 @@
 		</div>
 
 
-        <div id="gly1" style="{width: '90%', height: '700px'}">
+        <div class="gly2" style="{width: '90%', height: '700px'}">
                 
-                <div id="gly1mid">
+                <div class="gly2mid">
                     <table class="table">
                 <thead class="thead-light">
                     <tr>
@@ -89,7 +89,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in tabledata2" v-if="isShow"><!--v for的最基础用法  这里要循环的是
+                    <tr v-for="item in tabledata2"><!--v for的最基础用法  这里要循环的是
                     这个tr，这一行 当然也包括行里的每一个单元格 所以在tr上v－for 在单元格上取值 tabledata是直接绑定在
                     下面data里面的数组数据 item就代表每一项 应用场景：1.动态获取相同格式数据时 2.接收后端列表，循环取出每一条时
                     item.id 直接和对象数组的用法一样的 item就是每个对象 可以使用.语法 取属性 -->
@@ -279,18 +279,15 @@ components: {
 }
 </script>
 <style scoped>
- #gly1{
+ .gly2{
     float: right;
     width: 90%;
     position: relative;
-  
+    height: 700px;
   }
   
-  .glyzpgwrightbox{
-      float: right;
-      margin-left: 3px;
-  }
- #gly1mid{
+  
+ .gly2mid{
      text-align: center;
       white-space: nowrap;
      overflow-x: auto;
