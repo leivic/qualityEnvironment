@@ -27,8 +27,8 @@
 		            <th scope="col" width="10%">责任意识</th>
                     <th scope="col" width="10%">主人翁意识</th>
                     <th scope="col" width="10%">改进意识</th>
-		            <th scope="col" width="7%">总分</th>
-                    <th scope="col" width="7%">及格分</th>
+		            <th scope="col" width="7%">#</th>
+                    <th scope="col" width="7%">#</th>
 		            <th scope="col" width="7%">#</th> 
                     </tr>
                 </thead>

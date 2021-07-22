@@ -42,6 +42,7 @@ export default {
     getChart.getChart2(Echart1)
     this.month1=getChart.getmon()
     //this.getmon()  //mount里面不再加载echrts 因为month1=“” 所以this.getmon（）改变month1时 会直接触发watch 所以在watch里面加载echarts就行了
+    //但是区域的时间获取来自于util.js文件
   },
   watch:{
      month1(newVal,oldVal){//更改月份的时候 由于month1双向绑定 所以元素里的month1改变 data里的也会改 

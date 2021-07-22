@@ -189,7 +189,7 @@ watch:{
 			let ydata2=[]
 			console.log(res.data)
 			for (const x of res.data) {
-				xdata.push(x.yuefen+"月"),
+				xdata.push(x.yuefen),
 				ydata1.push(x.shuLiang),
 				ydata2.push(x.gaiLv)	
 			}

@@ -21,8 +21,8 @@
                     <tr>
                     <th scope="col" width="4%">#</th>
                     <th scope="col" width="15%">工位号</th>
-                    <th scope="col" width="10%">区域</th>
-                    <th scope="col" width="15%">检测时间</th>
+                    <th scope="col" width="10%">检测时间</th>
+                    <th scope="col" width="15%">区域</th>
 		            <th scope="col" width="7%">#</th> 
                     </tr>
                 </thead>
