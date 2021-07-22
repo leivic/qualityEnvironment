@@ -11,6 +11,7 @@ import Display from '@/global'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css' 
 import animated from 'animate.css'
+import store from './store';//将导出的store对象导入 要导入了在这个文件里才有store这个变量
 
 Vue.use(animated)
 Vue.use(ElementUI)
@@ -24,6 +25,7 @@ axios.defaults.withCredentials=true;
 new Vue({
   el: '#app',
   router,
+  store,//将store对象添加到vue实例上 
   components: { App },
   template: '<App/>',
 })
